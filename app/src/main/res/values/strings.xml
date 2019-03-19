@@ -1,3 +1,69 @@
 <resources>
     <string name="app_name">Conlubra</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="nav_header_linha_tempo">Linha do Tempo</string>
+    <string name="nav_header_perfil">Perfil</string>
+    <string name="nav_header_programacao">Programação</string>
+    <string name="nav_header_titulo_conta">Conta</string>
+    <string name="nav_header_logout">Logout</string>
+
+    <string name="s_b_geral">Geral</string>
+    <string name="s_b_minicursos">Minicursos</string>
+    <string name="s_b_favoritos">Favoritos</string>
+    <string name="s_b_mesa_redonda">Mesas Redondas</string>
+    <string name="s_b_outros">Outros</string>
+
+    <string name="s_adapter_local">Anfiteatro teatro local</string>
+    <string name="s_adapter_nome_item">Evento de  acolhida do evento de evento</string>
+    <string name="s_adapter_hora">00:00 - 00:00</string>
+
+    <string name="s_publicar">Publicar</string>
+    <string name="s_reportar">Reportar</string>
+    <string name="s_content_description_publicacao">Imagem da publicação</string>
+    <string name="s_numero_zero">0</string>
+    <string name="s_comentario">  Comentários</string>
+    <string name="s_publicacao">Puublicação</string>
+    <string name="s_nome">Nome</string>
+    <string name="s_data">Data</string>
+    <string name="s_likes">  Likes</string>
+    <string name="s_login">Login</string>
+    <string name="s_ou">ou</string>
+    <string name="s_cadastrar">Cadastrar</string>
+
+
+    <string name="s_hint_email">E-mail</string>
+    <string name="s_hint_senha">Senha</string>
+    <string name="s_hint_nome">Nome</string>
+    <string name="s_hint_confirma_senha">Confirme a senha</string>
+
+
+    <!-- mensagem Toast -->
+    <string name="m_usuario_sucesso">Usuário criado com sucesso</string>
+    <string name="m_usuario_falhou">Não foi possível criar usuário</string>
+    <string name="m_email_verificacao_enviado">Email de verificação foi enviado para sua caixa de entrada</string>
+    <string name="m_email_verificacao_falhou">Falhou ao enviar o email de verificação</string>
+    <string name="m_recuperar_senha_falhou">Falhou ao enviar email de recuperação de senha</string>
+    <string name="m_recuperar_senha_sucesso">Email de recuperação de senha enviado</string>
+    <string name="m_cadastrar_falhou">Falhou ao fazer cadastro</string>
+    <string name="m_login_novamente">Tente fazer o login novamente</string>
+
+
+    <!-- Mensagem builder -->
+    <string name="d_verificar_email">
+        Este e-mail ainda não foi verificado. Deseja que o email de verificação seja enviado novamente?
+        Se sim, pressione Sim, e verifique a caixa de entrada do seu e-mail.
+    </string>
+    <string name="d_sim">Sim</string>
+    <string name="d_nao">Não</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:gravity="center"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:background="@color/colorBackgroundLayout">
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="5dp"
+        android:layout_height="70dp"
+        android:background="@color/colorAccent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_hora_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/s_adapter_hora" />
+
+        <TextView
+            android:id="@+id/tv_nome_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="fill"
+            android:text="@string/s_adapter_nome_item"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_local_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/s_adapter_local" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/b_favoritar_item"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/ic_favorite_border_black_24dp" />
+</LinearLayout>
