@@ -18,6 +18,8 @@
     <string name="s_b_favoritos">Favoritos</string>
     <string name="s_b_mesa_redonda">Mesas Redondas</string>
     <string name="s_b_outros">Outros</string>
+    <string name="s_cd_galeria">Carregar da galeria</string>
+    <string name="s_cd_camera">Carregar da câmera</string>
 
     <string name="s_adapter_local">Anfiteatro teatro local</string>
     <string name="s_adapter_nome_item">Evento de  acolhida do evento de evento</string>
@@ -35,12 +37,15 @@
     <string name="s_login">Login</string>
     <string name="s_ou">ou</string>
     <string name="s_cadastrar">Cadastrar</string>
+    <string name="s_postagens">Postagens</string>
 
 
     <string name="s_hint_email">E-mail</string>
     <string name="s_hint_senha">Senha</string>
     <string name="s_hint_nome">Nome</string>
     <string name="s_hint_confirma_senha">Confirme a senha</string>
+    <string name="s_hint_cargo">Cargo</string>
+    <string name="s_hint_instituicao">Instituição</string>
 
 
     <!-- mensagem Toast -->
@@ -61,6 +66,11 @@
     </string>
     <string name="d_sim">Sim</string>
     <string name="d_nao">Não</string>
+    <string name="d_escolha_origem_foto">Escolha a origem da foto</string>
+    <string-array name="d_array_escolha">
+        <item>Câmera</item>
+        <item>Galeria</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

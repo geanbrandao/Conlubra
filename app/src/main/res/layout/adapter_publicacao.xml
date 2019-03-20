@@ -10,7 +10,7 @@
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_foto_perfil_escrever"
+            android:id="@+id/civFotoPerfilPublicacao"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="5dp" />
@@ -22,7 +22,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_publicacao_nome"
+                android:id="@+id/tvPublicacaoNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/s_nome"
@@ -31,7 +31,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_publicacao_data"
+                android:id="@+id/tvPublicacaoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/s_data"
@@ -39,7 +39,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/tv_publicacao"
+                android:id="@+id/tvPublicacao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
@@ -50,7 +50,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/iv_foto_publicacao"
+        android:id="@+id/ivFotoPublicacao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/s_content_description_publicacao"
@@ -62,22 +62,20 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_contador_likes"
+            android:id="@+id/tvPublicacaoContadorLikes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="55dp"
-            android:layout_marginLeft="55dp"
             android:padding="2dp"
             android:text="@string/s_numero_zero" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/tvPublicacaoLikes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:drawableStart="@drawable/ic_favorite_border_black_24dp"
-            android:drawableLeft="@drawable/ic_favorite_border_black_24dp"
             android:padding="2dp"
             android:text="@string/s_likes" />
 
@@ -88,7 +86,7 @@
             android:background="@color/colorBlack" />
 
         <TextView
-            android:id="@+id/tv_contador_comentarios"
+            android:id="@+id/tvPublicacaoContadorComentarios"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
@@ -97,11 +95,10 @@
             android:text="@string/s_numero_zero" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/tvPublicacaoComentarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_comment_black_24dp"
-            android:drawableLeft="@drawable/ic_comment_black_24dp"
             android:padding="2dp"
             android:text="@string/s_comentario" />
     </LinearLayout>

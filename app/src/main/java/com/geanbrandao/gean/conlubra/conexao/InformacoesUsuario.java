@@ -73,7 +73,7 @@ public class InformacoesUsuario {
         }
     }
 
-    public boolean atualizaFotoDePerfilUsuario(String url) {
+    public void atualizaFotoDePerfilUsuario(String url) {
 
         try {
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
@@ -85,13 +85,13 @@ public class InformacoesUsuario {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (!task.isSuccessful()) {
                         Log.i(TAG, "Erro ao atualizar foto de perfil");
+                    } else {
+                        Log.i(TAG, "Sucesso ao atualizar foto de perfil");
                     }
                 }
             });
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
     }
 

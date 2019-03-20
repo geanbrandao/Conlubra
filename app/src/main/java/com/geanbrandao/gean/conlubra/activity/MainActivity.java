@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity
 
     private CircleImageView headerfotoPerfil;
     private TextView headerNome, headerEmail;
+    private Button editarPerfil;
 
 
     @Override
@@ -65,8 +67,6 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-//        NavigationView navigationView = findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity
 
         setTitle("Linha do Tempo");
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.frameConteudo, feedFragment);
         fragmentTransaction.commit();
 
@@ -148,16 +149,19 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_feed) {
             setTitle("Linha do Tempo");
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.replace(R.id.frameConteudo, feedFragment);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_perfil) {
             setTitle("Perfil");
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.replace(R.id.frameConteudo, perfilFragment);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_programacao) {
             setTitle("Programção");
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.replace(R.id.frameConteudo, programacaoFragment);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_logout) {

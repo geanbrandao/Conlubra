@@ -7,9 +7,11 @@ public class Usuario {
 
     private String idUsuario; // indice - email
 
-    private String Nome;
+    private String nome;
     private String email;
     private String imagemPerfilUrl;
+    private String instituicao;
+    private String cargo;
     private int contadorPostagem;
     private int contadorComentario;
     private List<String> idsPostagens;
@@ -18,11 +20,13 @@ public class Usuario {
     private List<String> idsComentario;
     private List<String> idsComentarioCurtidos;
 
-    public Usuario(String idUsuario, String nome, String email, String imagemPerfilUrl, int contadorPostagem, int contadorComentario, List<String> idsPostagens, List<String> idsPostagemCurtidas, List<String> idsItensFavoritos, List<String> idsComentario, List<String> idsComentarioCurtidos) {
+    public Usuario(String idUsuario, String nome, String email, String imagemPerfilUrl, String instituicao, String cargo, int contadorPostagem, int contadorComentario, List<String> idsPostagens, List<String> idsPostagemCurtidas, List<String> idsItensFavoritos, List<String> idsComentario, List<String> idsComentarioCurtidos) {
         this.idUsuario = idUsuario;
-        Nome = nome;
+        this.nome = nome;
         this.email = email;
         this.imagemPerfilUrl = imagemPerfilUrl;
+        this.instituicao = instituicao;
+        this.cargo = cargo;
         this.contadorPostagem = contadorPostagem;
         this.contadorComentario = contadorComentario;
         this.idsPostagens = idsPostagens;
@@ -30,6 +34,9 @@ public class Usuario {
         this.idsItensFavoritos = idsItensFavoritos;
         this.idsComentario = idsComentario;
         this.idsComentarioCurtidos = idsComentarioCurtidos;
+    }
+
+    public Usuario() {
     }
 
     public int getContadorComentario() {
@@ -80,19 +87,6 @@ public class Usuario {
         this.idsComentarioCurtidos = idsComentarioCurtidos;
     }
 
-    public Usuario() {
-    }
-
-
-
-    public String getNome() {
-        return Nome;
-    }
-
-    public void setNome(String nome) {
-        Nome = nome;
-    }
-
     public String getIdUsuario() {
         return idUsuario;
     }
@@ -101,6 +95,29 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getInstituicao() {
+        return instituicao;
+    }
+
+    public void setInstituicao(String instituicao) {
+        this.instituicao = instituicao;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
 
     public String getEmail() {
         return email;

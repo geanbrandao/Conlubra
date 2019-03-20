@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.geanbrandao.gean.conlubra.Base64Custom;
+import com.geanbrandao.gean.conlubra.modelo.Postagem;
 import com.geanbrandao.gean.conlubra.modelo.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -12,6 +13,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 
 // classe para lidar apenas com o firestore
 public class Operacoes {
@@ -57,6 +59,38 @@ public class Operacoes {
                 Log.i(TAG, "Falhou ao carregar usuárioa" + e.getMessage());
             }
         });
+    }
+
+    public static void updateFotoPerfilUrl(String url) {
+        FirebaseFirestore db = InstanciasFirebase.getFirebaseFirestore();
+        db.collection(USER).document(Base64Custom.codificarBase64(InformacoesUsuario.user.getEmail()))
+                .update("imagemPerfilUrl", url)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()) {
+                            Log.i(TAG, "Url da foto de perfil atualizada");
+                        } else {
+                            Log.i(TAG, "Falhou ao atualizar a Url da foto de perfil");
+                        }
+                    }
+                });
+    }
+
+    public static void gravaPostagem(Postagem post){
+        FirebaseFirestore db = InstanciasFirebase.getFirebaseFirestore();
+        db.collection(POST).document(post.getIdPostagem())
+                .set(post).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Log.i(TAG, "Postagem inserida com sucesso ");
+                } else {
+                    Log.i(TAG, "Falhou ao inserir a postagem" + task.getException());
+                }
+            }
+        });
+
     }
 
 }

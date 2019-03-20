@@ -1,7 +1,8 @@
 package com.geanbrandao.gean.conlubra.modelo;
 
-import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.ServerTimestamp;
 
+import java.util.Date;
 import java.util.List;
 
 // colecao postagem
@@ -9,8 +10,12 @@ public class Postagem {
 
     private String idPostagem; // indice
 
-    private String autorPostagem; // id do usuario
-    private FieldValue dataPostagem;
+    private String fotoAutorPostagem;
+    private String nomeAutorPostagem;
+
+    @ServerTimestamp
+    private Date dataPostagem;
+
     private String conteudoPostagem;
     private String imagemPostagem;
     private int contadorLikesPostagem;
@@ -22,9 +27,10 @@ public class Postagem {
     public Postagem() {
     }
 
-    public Postagem(String idPostagem, String autorPostagem, FieldValue dataPostagem, String conteudoPostagem, String imagemPostagem, int contadorLikesPostagem, int contadorComentariosPostagem, List<String> likesPostagemIdUsuarios, List<Comentario> comentariosPostagem) {
+    public Postagem(String idPostagem, String fotoAutorPostagem, String nomeAutorPostagem, Date dataPostagem, String conteudoPostagem, String imagemPostagem, int contadorLikesPostagem, int contadorComentariosPostagem, List<String> likesPostagemIdUsuarios, List<Comentario> comentariosPostagem) {
         this.idPostagem = idPostagem;
-        this.autorPostagem = autorPostagem;
+        this.fotoAutorPostagem = fotoAutorPostagem;
+        this.nomeAutorPostagem = nomeAutorPostagem;
         this.dataPostagem = dataPostagem;
         this.conteudoPostagem = conteudoPostagem;
         this.imagemPostagem = imagemPostagem;
@@ -34,28 +40,36 @@ public class Postagem {
         this.comentariosPostagem = comentariosPostagem;
     }
 
+    public String getFotoAutorPostagem() {
+        return fotoAutorPostagem;
+    }
+
+    public void setFotoAutorPostagem(String fotoAutorPostagem) {
+        this.fotoAutorPostagem = fotoAutorPostagem;
+    }
+
+    public String getNomeAutorPostagem() {
+        return nomeAutorPostagem;
+    }
+
+    public void setNomeAutorPostagem(String nomeAutorPostagem) {
+        this.nomeAutorPostagem = nomeAutorPostagem;
+    }
+
+    public Date getDataPostagem() {
+        return dataPostagem;
+    }
+
+    public void setDataPostagem(Date dataPostagem) {
+        this.dataPostagem = dataPostagem;
+    }
+
     public String getIdPostagem() {
         return idPostagem;
     }
 
     public void setIdPostagem(String idPostagem) {
         this.idPostagem = idPostagem;
-    }
-
-    public String getAutorPostagem() {
-        return autorPostagem;
-    }
-
-    public void setAutorPostagem(String autorPostagem) {
-        this.autorPostagem = autorPostagem;
-    }
-
-    public FieldValue getDataPostagem() {
-        return dataPostagem;
-    }
-
-    public void setDataPostagem(FieldValue dataPostagem) {
-        this.dataPostagem = dataPostagem;
     }
 
     public String getConteudoPostagem() {

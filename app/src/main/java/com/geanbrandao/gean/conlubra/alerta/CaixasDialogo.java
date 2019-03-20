@@ -3,9 +3,12 @@ package com.geanbrandao.gean.conlubra.alerta;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.geanbrandao.gean.conlubra.R;
 import com.geanbrandao.gean.conlubra.conexao.InformacoesUsuario;
@@ -29,7 +32,7 @@ public class CaixasDialogo {
         verificarEmail.show();
     }
 
-    private void CriacaixaVericarEmail(Context context) {
+    private void CriacaixaVericarEmail(final Context context) {
         verificarEmail = new AlertDialog.Builder(context);
         verificarEmail.setMessage(R.string.d_verificar_email);
         verificarEmail.setPositiveButton(R.string.d_sim, new DialogInterface.OnClickListener() {
@@ -53,8 +56,7 @@ public class CaixasDialogo {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Log.i(TAG, "Botão não - Positivo");
-                        //Toast.makeText(getContext(), "Tente fazer login novamente", Toast.LENGTH_SHORT);
-
+                        Toast.makeText(context, "Tente fazer login novamente", Toast.LENGTH_SHORT);
                         iu.signOut();
                     }
                 });
