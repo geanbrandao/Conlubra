@@ -20,7 +20,6 @@ import android.widget.EditText;
 import com.geanbrandao.gean.conlubra.DownloadImageTask;
 import com.geanbrandao.gean.conlubra.Permissao;
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.activity.MainActivity;
 import com.geanbrandao.gean.conlubra.conexao.InformacoesUsuario;
 import com.geanbrandao.gean.conlubra.conexao.InstanciasFirebase;
 import com.geanbrandao.gean.conlubra.conexao.Operacoes;
@@ -79,7 +78,7 @@ public class Perfil extends Fragment {
         edEmail = view.findViewById(R.id.edEmail);
         edCargo = view.findViewById(R.id.edCargo);
         edInstituicao = view.findViewById(R.id.edInstituicao);
-        civFotoPerfilPerfil = view.findViewById(R.id.civFotoPerfilPerfil);
+        civFotoPerfilPerfil = view.findViewById(R.id.civFotoPerfilFeed);
         bGaleria = view.findViewById(R.id.bGaleria);
         bCamera = view.findViewById(R.id.bCamera);
 

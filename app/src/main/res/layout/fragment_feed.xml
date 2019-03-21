@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civFotoPerfilPerfil"
+            android:id="@+id/civFotoPerfilFeed"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
@@ -68,10 +68,10 @@
             android:ems="10"
             android:text="@string/s_publicar"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/civFotoPerfilPerfil"
+            app:layout_constraintBottom_toBottomOf="@+id/civFotoPerfilFeed"
             app:layout_constraintEnd_toEndOf="@+id/view3"
-            app:layout_constraintStart_toEndOf="@+id/civFotoPerfilPerfil"
-            app:layout_constraintTop_toTopOf="@+id/civFotoPerfilPerfil" />
+            app:layout_constraintStart_toEndOf="@+id/civFotoPerfilFeed"
+            app:layout_constraintTop_toTopOf="@+id/civFotoPerfilFeed" />
 
         <ImageView
             android:id="@+id/logo"

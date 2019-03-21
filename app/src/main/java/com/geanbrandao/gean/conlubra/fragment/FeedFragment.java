@@ -13,9 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.geanbrandao.gean.conlubra.R;
 import com.geanbrandao.gean.conlubra.activity.EscreverPublicacaoActivity;
 import com.geanbrandao.gean.conlubra.adapter.PublicacaoAdapter;
@@ -33,12 +34,15 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FeedFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, PublicacaoAdapter.PublicacaoAdapterListener {
 
     private TextView tvPublicar;
+    private CircleImageView circleImageView;
 
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -65,6 +69,7 @@ public class FeedFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         swipeRefreshLayout.setOnRefreshListener(this);
 
         tvPublicar = view.findViewById(R.id.tv_publicar);
+        circleImageView = view.findViewById(R.id.civFotoPerfilFeed);
 
         tvPublicar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +77,13 @@ public class FeedFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 startActivity(new Intent(getContext(), EscreverPublicacaoActivity.class));
             }
         });
+
+        if(InformacoesUsuario.user.getImagemPerfilUrl() != null){
+            Glide.with(getContext())
+                    .load(InformacoesUsuario.user.getImagemPerfilUrl())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(circleImageView);
+        }
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -148,7 +160,7 @@ public class FeedFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 }
                 postagens.get(i).setLikesPostagemIdUsuarios(listaAux); // passa a nova lista de likes
             }
-            listaAuxCurtidas.remove(InformacoesUsuario.user.getIdUsuario());
+            listaAuxCurtidas.remove(postagens.get(i).getIdPostagem());
             countLikes--;
             postagens.get(i).setContadorLikesPostagem(countLikes);
             Operacoes.updateContadorLikes(postagens.get(i));
