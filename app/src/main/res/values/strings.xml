@@ -29,11 +29,11 @@
     <string name="s_reportar">Reportar</string>
     <string name="s_content_description_publicacao">Imagem da publicação</string>
     <string name="s_numero_zero">0</string>
-    <string name="s_comentario">  Comentários</string>
-    <string name="s_publicacao">Puublicação</string>
+    <string name="s_comentario">Comentários</string>
+    <string name="s_publicacao">Publicação</string>
     <string name="s_nome">Nome</string>
     <string name="s_data">Data</string>
-    <string name="s_likes">  Likes</string>
+    <string name="s_likes">Likes</string>
     <string name="s_login">Login</string>
     <string name="s_ou">ou</string>
     <string name="s_cadastrar">Cadastrar</string>

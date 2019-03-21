@@ -21,13 +21,13 @@ public class Postagem {
     private int contadorLikesPostagem;
     private int contadorComentariosPostagem;
     private List<String> likesPostagemIdUsuarios;
-    private List<Comentario> comentariosPostagem;
+    private List<Comentario> comentariosPostagemIdUsuario;
 
 
     public Postagem() {
     }
 
-    public Postagem(String idPostagem, String fotoAutorPostagem, String nomeAutorPostagem, Date dataPostagem, String conteudoPostagem, String imagemPostagem, int contadorLikesPostagem, int contadorComentariosPostagem, List<String> likesPostagemIdUsuarios, List<Comentario> comentariosPostagem) {
+    public Postagem(String idPostagem, String fotoAutorPostagem, String nomeAutorPostagem, Date dataPostagem, String conteudoPostagem, String imagemPostagem, int contadorLikesPostagem, int contadorComentariosPostagem, List<String> likesPostagemIdUsuarios, List<Comentario> comentariosPostagemIdUsuario) {
         this.idPostagem = idPostagem;
         this.fotoAutorPostagem = fotoAutorPostagem;
         this.nomeAutorPostagem = nomeAutorPostagem;
@@ -37,7 +37,7 @@ public class Postagem {
         this.contadorLikesPostagem = contadorLikesPostagem;
         this.contadorComentariosPostagem = contadorComentariosPostagem;
         this.likesPostagemIdUsuarios = likesPostagemIdUsuarios;
-        this.comentariosPostagem = comentariosPostagem;
+        this.comentariosPostagemIdUsuario = comentariosPostagemIdUsuario;
     }
 
     public String getFotoAutorPostagem() {
@@ -112,11 +112,11 @@ public class Postagem {
         this.likesPostagemIdUsuarios = likesPostagemIdUsuarios;
     }
 
-    public List<Comentario> getComentariosPostagem() {
-        return comentariosPostagem;
+    public List<Comentario> getComentariosPostagemIdUsuario() {
+        return comentariosPostagemIdUsuario;
     }
 
-    public void setComentariosPostagem(List<Comentario> comentariosPostagem) {
-        this.comentariosPostagem = comentariosPostagem;
+    public void setComentariosPostagemIdUsuario(List<Comentario> comentariosPostagemIdUsuario) {
+        this.comentariosPostagemIdUsuario = comentariosPostagemIdUsuario;
     }
 }

@@ -32,20 +32,30 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
             android:background="@drawable/foto_de_perfil_padrao"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-        <android.support.v7.widget.RecyclerView
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/srl_feed"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintBottom_toTopOf="@+id/view3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/logo">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_feed"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <TextView
             android:id="@+id/tv_publicar"
@@ -55,7 +65,6 @@
             android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
             android:drawableEnd="@drawable/ic_send_black_24dp"
-            android:drawableRight="@drawable/ic_send_black_24dp"
             android:ems="10"
             android:text="@string/s_publicar"
             android:textSize="18sp"
@@ -65,7 +74,7 @@
             app:layout_constraintTop_toTopOf="@+id/civFotoPerfilPerfil" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

@@ -29,6 +29,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -51,6 +53,8 @@ public class EscreverPublicacaoActivity extends AppCompatActivity {
     private boolean imagemAdd;
 
     private byte[] dadosImagem;
+
+    private List<String> listaAux;
 
     // firebase
     private StorageReference imagemRef, storageReference;
@@ -111,6 +115,10 @@ public class EscreverPublicacaoActivity extends AppCompatActivity {
                 post.setContadorComentariosPostagem(0);
                 post.setContadorLikesPostagem(0);
 
+                listaAux = new ArrayList<>();
+                if(InformacoesUsuario.user.getIdsPostagens() != null) {
+                    listaAux = InformacoesUsuario.user.getIdsPostagens();
+                }
                 // se tiver adicionado uma imagem precisa fazer o upload da imagem para o firebase
                 if(imagemAdd) {
                     UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
@@ -151,6 +159,9 @@ public class EscreverPublicacaoActivity extends AppCompatActivity {
                                     InformacoesUsuario.user.setContadorPostagem(numPost);
                                     post.setImagemPostagem(downloadUri.toString());
                                     Operacoes.gravaPostagem(post);
+                                    listaAux.add(post.getIdPostagem());
+                                    InformacoesUsuario.user.setIdsPostagens(listaAux);
+                                    Operacoes.updateListaIdsPostagensUsuario(listaAux);
                                     Operacoes.criarUsuario(InformacoesUsuario.user);
                                 }
                             }
@@ -160,6 +171,9 @@ public class EscreverPublicacaoActivity extends AppCompatActivity {
                     int numPost = InformacoesUsuario.user.getContadorPostagem() + 1;
                     InformacoesUsuario.user.setContadorPostagem(numPost);
                     Operacoes.gravaPostagem(post);
+                    listaAux.add(post.getIdPostagem());
+                    InformacoesUsuario.user.setIdsPostagens(listaAux);
+                    Operacoes.updateListaIdsPostagensUsuario(listaAux);
                     Operacoes.criarUsuario(InformacoesUsuario.user);
                 }
                 Log.i(TAG, "Publicacao postada");
@@ -210,4 +224,6 @@ public class EscreverPublicacaoActivity extends AppCompatActivity {
         }
 
     }
+
+
 }
