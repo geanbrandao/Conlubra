@@ -11,28 +11,28 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.conexao.InformacoesUsuario;
-import com.geanbrandao.gean.conlubra.modelo.ItemProgramacao;
+import com.geanbrandao.gean.conlubra.connection.UserInformation;
+import com.geanbrandao.gean.conlubra.model.ItemProgramacao;
 
 import java.util.List;
 
-public class ProgramacaoAdapter extends RecyclerView.Adapter<ProgramacaoAdapter.MyViewHolder> {
+public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.MyViewHolder> {
 
     private static final String TAG = "AdapterProg";
 
     private Context context;
-    private List<ItemProgramacao> programacao;
+    private List<ItemProgramacao> programming;
     private ProgramacaoAdapaterListener listener;
 
-    public ProgramacaoAdapter(Context context, List<ItemProgramacao> programacao, ProgramacaoAdapaterListener listener) {
+    public ProgrammingAdapter(Context context, List<ItemProgramacao> programming, ProgramacaoAdapaterListener listener) {
         this.context = context;
-        this.programacao = programacao;
+        this.programming = programming;
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public ProgramacaoAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ProgrammingAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.adapter_item_programacao, viewGroup, false);
 
@@ -40,16 +40,16 @@ public class ProgramacaoAdapter extends RecyclerView.Adapter<ProgramacaoAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProgramacaoAdapter.MyViewHolder holder, int i) {
+    public void onBindViewHolder(@NonNull ProgrammingAdapter.MyViewHolder holder, int i) {
 
-        ItemProgramacao p = programacao.get(i);
-        holder.hora.setText(p.getHora());
-        holder.nome.setText(p.getNome());
-        holder.local.setText(p.getLocal());
+        ItemProgramacao p = programming.get(i);
+        holder.hour.setText(p.getHora());
+        holder.name.setText(p.getNome());
+        holder.place.setText(p.getLocal());
         if (isFavorito(p.getId())) {
-            holder.favorito.setBackground(context.getResources().getDrawable(R.drawable.ic_favorite_black_24dp));
+            holder.favorite.setBackground(context.getResources().getDrawable(R.drawable.ic_favorite_black_24dp));
         } else {
-            holder.favorito.setBackground(context.getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
+            holder.favorite.setBackground(context.getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
         }
 
         aplicarEventoClick(holder, i);
@@ -57,8 +57,8 @@ public class ProgramacaoAdapter extends RecyclerView.Adapter<ProgramacaoAdapter.
     }
 
     private boolean isFavorito(String id) {
-        if (InformacoesUsuario.user.getIdsItensFavoritos() != null) {
-            for (String f : InformacoesUsuario.user.getIdsItensFavoritos()) {
+        if (UserInformation.user.getIdsItensFavoritos() != null) {
+            for (String f : UserInformation.user.getIdsItensFavoritos()) {
                 if (f.equals(id)) { // compara se esta na lista dos favoritos do usuario
                     return true;
                 }
@@ -69,29 +69,13 @@ public class ProgramacaoAdapter extends RecyclerView.Adapter<ProgramacaoAdapter.
 
     @Override
     public int getItemCount() {
-        return programacao.size();
+        return programming.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView hora, nome, local;
-        Button favorito;
-
-
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            hora = itemView.findViewById(R.id.tv_hora_item);
-            nome = itemView.findViewById(R.id.tv_nome_item);
-            local = itemView.findViewById(R.id.tv_local_item);
-            favorito = itemView.findViewById(R.id.b_favoritar_item);
-
-        }
-
-    }
 
     private void aplicarEventoClick(final MyViewHolder holder, final int position) {
-        holder.nome.setOnClickListener(new View.OnClickListener() {
+        holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "nome clicado");
@@ -99,18 +83,18 @@ public class ProgramacaoAdapter extends RecyclerView.Adapter<ProgramacaoAdapter.
             }
         });
 
-        holder.favorito.setOnClickListener(new View.OnClickListener() {
+        holder.favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (holder.favorito.getBackground().getConstantState()
+                if (holder.favorite.getBackground().getConstantState()
                         .equals(context.getResources()
                                 .getDrawable(R.drawable.ic_favorite_black_24dp)
                                 .getConstantState())) {
-                    holder.favorito.setBackground(context.getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
+                    holder.favorite.setBackground(context.getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp));
                     listener.onFavoritoCliked(position, true);
                     Log.i(TAG, "com like");
                 } else {
-                    holder.favorito.setBackground(context.getResources().getDrawable(R.drawable.ic_favorite_black_24dp));
+                    holder.favorite.setBackground(context.getResources().getDrawable(R.drawable.ic_favorite_black_24dp));
                     Log.i(TAG, "sem like");
                     // sem like
                     listener.onFavoritoCliked(position, false);
@@ -124,5 +108,23 @@ public class ProgramacaoAdapter extends RecyclerView.Adapter<ProgramacaoAdapter.
         void onItemClicked(int position);
 
         void onFavoritoCliked(int position, boolean like);
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+
+        TextView hour, name, place;
+        Button favorite;
+
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            hour = itemView.findViewById(R.id.tv_hora_item);
+            name = itemView.findViewById(R.id.tv_nome_item);
+            place = itemView.findViewById(R.id.tv_local_item);
+            favorite = itemView.findViewById(R.id.b_favoritar_item);
+
+        }
+
     }
 }

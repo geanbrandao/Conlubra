@@ -1,4 +1,4 @@
-package com.geanbrandao.gean.conlubra.alerta;
+package com.geanbrandao.gean.conlubra.alert;
 
 
 import android.content.Context;

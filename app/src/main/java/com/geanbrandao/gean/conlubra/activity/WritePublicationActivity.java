@@ -17,14 +17,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.conexao.InformacoesUsuario;
-import com.geanbrandao.gean.conlubra.conexao.InstanciasFirebase;
-import com.geanbrandao.gean.conlubra.conexao.Operacoes;
-import com.geanbrandao.gean.conlubra.modelo.Postagem;
+import com.geanbrandao.gean.conlubra.connection.UserInformation;
+import com.geanbrandao.gean.conlubra.connection.ConnectionFirebase;
+import com.geanbrandao.gean.conlubra.connection.Operations;
+import com.geanbrandao.gean.conlubra.model.Postagem;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -34,30 +33,30 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class EscreverPublicacaoActivity extends AppCompatActivity {
+public class WritePublicationActivity extends AppCompatActivity {
 
-    private CircleImageView fotoDePerfil;
-    private TextView tvNome;
-    private EditText edEscreverPublicacao;
-    private Button bPublicar, bAddFoto;
-    private ImageView ivEscreverPublicacao;
+    private CircleImageView civProfilePicture;
+    private TextView tvName;
+    private EditText edWritePublication;
+    private Button bPublicar, bAddPicture;
+    private ImageView ivWritePublication;
 
     private static final String PASTA1 = "imagens";
     private static final String PASTA2 = "postagens";
     private static final String TAG = "EscPublicacao";
 
     private Postagem post;
-    private String identificadorPostagem;
-    private String identificadorUsuario;
+    private String identifierPost;
+    private String identifierUser;
 
-    private boolean imagemAdd;
+    private boolean imgAdd;
 
-    private byte[] dadosImagem;
+    private byte[] dataImg;
 
-    private List<String> listaAux;
+    private List<String> listAux;
 
     // firebase
-    private StorageReference imagemRef, storageReference;
+    private StorageReference SRimgRef, storageReference;
 
 
     private static final int SELECAO_GALERIA = 200;
@@ -68,30 +67,30 @@ public class EscreverPublicacaoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_escrever_publicacao);
 
         // firabse
-        storageReference = InstanciasFirebase.getFirebaseStorage();
+        storageReference = ConnectionFirebase.getFirebaseStorage();
 
-        int aux = InformacoesUsuario.user.getContadorPostagem()+1;
-        identificadorPostagem = InformacoesUsuario.user.getIdUsuario()+aux; // id do usuario mais a o numero de postagens
-        identificadorUsuario = InformacoesUsuario.user.getIdUsuario();
-        imagemAdd = false;
+        int aux = UserInformation.user.getContadorPostagem()+1;
+        identifierPost = UserInformation.user.getIdUsuario()+aux; // id do usuario mais a o numero de postagens
+        identifierUser = UserInformation.user.getIdUsuario();
+        imgAdd = false;
         post = new Postagem();
 
-        fotoDePerfil = findViewById(R.id.civ_foto_perfil_escrever_publicacao);
-        tvNome = findViewById(R.id.tv_escrever_publicacao_nome);
-        edEscreverPublicacao = findViewById(R.id.ed_escrever_publicacao);
+        civProfilePicture = findViewById(R.id.civ_foto_perfil_escrever_publicacao);
+        tvName = findViewById(R.id.tv_escrever_publicacao_nome);
+        edWritePublication = findViewById(R.id.ed_escrever_publicacao);
         bPublicar = findViewById(R.id.b_publicar);
-        bAddFoto = findViewById(R.id.b_add_foto);
-        ivEscreverPublicacao = findViewById(R.id.ivEscreverPublicacao);
+        bAddPicture = findViewById(R.id.b_add_foto);
+        ivWritePublication = findViewById(R.id.ivWritePublication);
 
-        if (InformacoesUsuario.user.getImagemPerfilUrl() != null) {
+        if (UserInformation.user.getImagemPerfilUrl() != null) {
             Glide.with(this)
-                    .load(InformacoesUsuario.user.getImagemPerfilUrl())
+                    .load(UserInformation.user.getImagemPerfilUrl())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(fotoDePerfil);
+                    .into(civProfilePicture);
         }
-        tvNome.setText(InformacoesUsuario.user.getNome());
+        tvName.setText(UserInformation.user.getNome());
 
-        bAddFoto.setOnClickListener(new View.OnClickListener() {
+        bAddPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -107,21 +106,21 @@ public class EscreverPublicacaoActivity extends AppCompatActivity {
 
 
                 // pegar as informacoes do post
-                post.setFotoAutorPostagem(InformacoesUsuario.user.getImagemPerfilUrl());
-                post.setNomeAutorPostagem(InformacoesUsuario.user.getNome());
-                String publicacao = edEscreverPublicacao.getText().toString().trim();
+                post.setFotoAutorPostagem(UserInformation.user.getImagemPerfilUrl());
+                post.setNomeAutorPostagem(UserInformation.user.getNome());
+                String publicacao = edWritePublication.getText().toString().trim();
                 post.setConteudoPostagem(publicacao);
-                post.setIdPostagem(identificadorPostagem);
+                post.setIdPostagem(identifierPost);
                 post.setContadorComentariosPostagem(0);
                 post.setContadorLikesPostagem(0);
 
-                listaAux = new ArrayList<>();
-                if(InformacoesUsuario.user.getIdsPostagens() != null) {
-                    listaAux = InformacoesUsuario.user.getIdsPostagens();
+                listAux = new ArrayList<>();
+                if(UserInformation.user.getIdsPostagens() != null) {
+                    listAux = UserInformation.user.getIdsPostagens();
                 }
                 // se tiver adicionado uma imagem precisa fazer o upload da imagem para o firebase
-                if(imagemAdd) {
-                    UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
+                if(imgAdd) {
+                    UploadTask uploadTask = SRimgRef.putBytes(dataImg);
                     uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -142,7 +141,7 @@ public class EscreverPublicacaoActivity extends AppCompatActivity {
                             }
 
                             // Continue with the task to get the download URL
-                            return imagemRef.getDownloadUrl();
+                            return SRimgRef.getDownloadUrl();
                         }
                     }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                         @Override
@@ -155,26 +154,26 @@ public class EscreverPublicacaoActivity extends AppCompatActivity {
                                     return;
                                 } else {
                                     Log.i(TAG, "Uri não nulla");
-                                    int numPost = InformacoesUsuario.user.getContadorPostagem() + 1;
-                                    InformacoesUsuario.user.setContadorPostagem(numPost);
+                                    int numPost = UserInformation.user.getContadorPostagem() + 1;
+                                    UserInformation.user.setContadorPostagem(numPost);
                                     post.setImagemPostagem(downloadUri.toString());
-                                    Operacoes.gravaPostagem(post);
-                                    listaAux.add(post.getIdPostagem());
-                                    InformacoesUsuario.user.setIdsPostagens(listaAux);
-                                    Operacoes.updateListaIdsPostagensUsuario(listaAux);
-                                    Operacoes.criarUsuario(InformacoesUsuario.user);
+                                    Operations.gravaPostagem(post);
+                                    listAux.add(post.getIdPostagem());
+                                    UserInformation.user.setIdsPostagens(listAux);
+                                    Operations.updateListaIdsPostagensUsuario(listAux);
+                                    Operations.criarUsuario(UserInformation.user);
                                 }
                             }
                         }
                     });
                 } else {
-                    int numPost = InformacoesUsuario.user.getContadorPostagem() + 1;
-                    InformacoesUsuario.user.setContadorPostagem(numPost);
-                    Operacoes.gravaPostagem(post);
-                    listaAux.add(post.getIdPostagem());
-                    InformacoesUsuario.user.setIdsPostagens(listaAux);
-                    Operacoes.updateListaIdsPostagensUsuario(listaAux);
-                    Operacoes.criarUsuario(InformacoesUsuario.user);
+                    int numPost = UserInformation.user.getContadorPostagem() + 1;
+                    UserInformation.user.setContadorPostagem(numPost);
+                    Operations.gravaPostagem(post);
+                    listAux.add(post.getIdPostagem());
+                    UserInformation.user.setIdsPostagens(listAux);
+                    Operations.updateListaIdsPostagensUsuario(listAux);
+                    Operations.criarUsuario(UserInformation.user);
                 }
                 Log.i(TAG, "Publicacao postada");
                 finish();
@@ -200,21 +199,21 @@ public class EscreverPublicacaoActivity extends AppCompatActivity {
 
                 if (imagem != null) {
                     Log.i(TAG, "imagem escolhida da galeria");
-                    ivEscreverPublicacao.setImageBitmap(imagem);
+                    ivWritePublication.setImageBitmap(imagem);
 
                     //Recuperar dados da imagem para o firebase
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     imagem.compress(Bitmap.CompressFormat.JPEG, 40, baos);
-                    dadosImagem = baos.toByteArray();
+                    dataImg = baos.toByteArray();
 
                     //Cria a referencia para o firebase
-                    imagemRef = storageReference
+                    SRimgRef = storageReference
                             .child(PASTA1)
                             .child(PASTA2)
-                            .child( identificadorUsuario )
-                            .child(identificadorPostagem + ".jpeg");
+                            .child( identifierUser )
+                            .child(identifierPost + ".jpeg");
 
-                    imagemAdd = true;
+                    imgAdd = true;
 
                 }
             } catch (Exception e) {

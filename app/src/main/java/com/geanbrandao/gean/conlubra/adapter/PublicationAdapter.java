@@ -7,15 +7,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.geanbrandao.gean.conlubra.DownloadImageTask;
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.conexao.InformacoesUsuario;
-import com.geanbrandao.gean.conlubra.modelo.Postagem;
+import com.geanbrandao.gean.conlubra.connection.UserInformation;
+import com.geanbrandao.gean.conlubra.model.Postagem;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,40 +23,40 @@ import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class PublicacaoAdapter extends RecyclerView.Adapter<PublicacaoAdapter.MyViewHolder> {
+public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.MyViewHolder> {
 
-    private List<Postagem> postagens;
+    private List<Postagem> posts;
     private Context context;
     private PublicacaoAdapterListener listener;
 
-    public PublicacaoAdapter(List<Postagem> postagens, Context context, PublicacaoAdapterListener listener) {
-        this.postagens = postagens;
+    public PublicationAdapter(List<Postagem> posts, Context context, PublicacaoAdapterListener listener) {
+        this.posts = posts;
         this.context = context;
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public PublicacaoAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public PublicationAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View itemView = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.adapter_publicacao, viewGroup, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PublicacaoAdapter.MyViewHolder holder, int i) {
-        Postagem p = postagens.get(i);
+    public void onBindViewHolder(@NonNull PublicationAdapter.MyViewHolder holder, int i) {
+        Postagem p = posts.get(i);
         if (p.getFotoAutorPostagem() != null) {
-            baixarImagem(p.getFotoAutorPostagem(), holder.fotoPerfil);
+            baixarImagem(p.getFotoAutorPostagem(), holder.profilePicture);
         }
         if (p.getImagemPostagem() != null) {
-            baixarImagem(p.getImagemPostagem(), holder.fotoPublicacao);
+            baixarImagem(p.getImagemPostagem(), holder.picturePost);
         }
-        holder.nome.setText(p.getNomeAutorPostagem());
-        holder.data.setText(formataData(p.getDataPostagem()));
-        holder.publicacao.setText(p.getConteudoPostagem());
-        holder.contadorLikes.setText(p.getContadorLikesPostagem() + "");
-        holder.contadorComentarios.setText(p.getContadorComentariosPostagem() + "");
+        holder.name.setText(p.getNomeAutorPostagem());
+        holder.date.setText(formataData(p.getDataPostagem()));
+        holder.post.setText(p.getConteudoPostagem());
+        holder.countLikes.setText(p.getContadorLikesPostagem() + "");
+        holder.countComments.setText(p.getContadorComentariosPostagem() + "");
         aplicaEventoClick(holder, i);
         if (isLike(p.getIdPostagem())) {
             holder.like.setBackground(context.getDrawable(R.drawable.ic_favorite_black_24dp));
@@ -68,8 +67,8 @@ public class PublicacaoAdapter extends RecyclerView.Adapter<PublicacaoAdapter.My
     }
 
     private boolean isLike(String id) {
-        if (InformacoesUsuario.user.getIdsPostagemCurtidas() != null ) {
-            for (String l : InformacoesUsuario.user.getIdsPostagemCurtidas()) {
+        if (UserInformation.user.getIdsPostagemCurtidas() != null ) {
+            for (String l : UserInformation.user.getIdsPostagemCurtidas()) {
                 if (id.equals(l)) { // compara se esta na lista das publicacoes curtidas pelo usuario
                     return true;
                 }
@@ -83,29 +82,38 @@ public class PublicacaoAdapter extends RecyclerView.Adapter<PublicacaoAdapter.My
             @Override
             public void onClick(View view) {
                 //Toast.makeText(context, "Botao like", Toast.LENGTH_SHORT).show();
-                int countLikes = postagens.get(position).getContadorLikesPostagem();
+                int countLikes = posts.get(position).getContadorLikesPostagem();
                 if (holder.like.getBackground().getConstantState()
                         .equals(context.getDrawable(R.drawable.ic_favorite_black_24dp)
                                 .getConstantState())) {
                     holder.like.setBackground(context.getDrawable(R.drawable.ic_favorite_border_black_24dp));
                     countLikes--;
-                    holder.contadorLikes.setText(""+countLikes);
+                    holder.countLikes.setText(""+countLikes);
                     listener.onLikeCliked(position, false);
                     Log.i("Like", "Tinha like agora não tem");
                 } else {
                     holder.like.setBackground(context.getDrawable(R.drawable.ic_favorite_black_24dp));
                     countLikes++;
-                    holder.contadorLikes.setText(""+countLikes);
+                    holder.countLikes.setText(""+countLikes);
                     listener.onLikeCliked(position, true);
                     Log.i("Like", "Não tinha like agora tem");
                 }
             }
         });
 
-        holder.comentario.setOnClickListener(new View.OnClickListener() {
+        holder.comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Botao comentario", Toast.LENGTH_SHORT).show();
+                listener.onComentarioCliked(position);
+            }
+        });
+
+        holder.post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Publicacao", Toast.LENGTH_SHORT).show();
+                listener.onItemClicked(position);
             }
         });
     }
@@ -121,29 +129,29 @@ public class PublicacaoAdapter extends RecyclerView.Adapter<PublicacaoAdapter.My
 
     @Override
     public int getItemCount() {
-        return postagens.size();
+        return posts.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView nome, publicacao, data, contadorLikes, contadorComentarios;
-        private ImageView like, comentario;
-        private ImageView fotoPublicacao;
-        private CircleImageView fotoPerfil;
+        private TextView name, post, date, countLikes, countComments;
+        private ImageView like, comment;
+        private ImageView picturePost;
+        private CircleImageView profilePicture;
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            nome = itemView.findViewById(R.id.tvPublicacaoNome);
-            publicacao = itemView.findViewById(R.id.tvPublicacao);
-            data = itemView.findViewById(R.id.tvPublicacaoData);
-            contadorLikes = itemView.findViewById(R.id.tvPublicacaoContadorLikes);
-            contadorComentarios = itemView.findViewById(R.id.tvPublicacaoContadorComentarios);
+            name = itemView.findViewById(R.id.tvPublicacaoNome);
+            post = itemView.findViewById(R.id.tvPublicacao);
+            date = itemView.findViewById(R.id.tvPublicacaoData);
+            countLikes = itemView.findViewById(R.id.tvPublicacaoContadorLikes);
+            countComments = itemView.findViewById(R.id.tvPublicacaoContadorComentarios);
             like = itemView.findViewById(R.id.bPublicacaoLikes);
-            comentario = itemView.findViewById(R.id.bPublicacaoComentarios);
-            fotoPerfil = itemView.findViewById(R.id.civFotoPerfilPublicacao);
-            fotoPublicacao = itemView.findViewById(R.id.ivFotoPublicacao);
+            comment = itemView.findViewById(R.id.bPublicacaoComentarios);
+            profilePicture = itemView.findViewById(R.id.civFotoPerfilPublicacao);
+            picturePost = itemView.findViewById(R.id.ivFotoPublicacao);
 
 
         }
@@ -154,6 +162,6 @@ public class PublicacaoAdapter extends RecyclerView.Adapter<PublicacaoAdapter.My
 
         void onLikeCliked(int position, boolean like);
 
-        void onComentarioCliked(int position, boolean like);
+        void onComentarioCliked(int position);
     }
 }

@@ -16,22 +16,21 @@ import android.widget.Toast;
 import com.geanbrandao.gean.conlubra.R;
 import com.geanbrandao.gean.conlubra.activity.LoadActivity;
 import com.geanbrandao.gean.conlubra.activity.LoginActivity;
-import com.geanbrandao.gean.conlubra.activity.MainActivity;
-import com.geanbrandao.gean.conlubra.alerta.CaixasDialogo;
-import com.geanbrandao.gean.conlubra.conexao.Operacoes;
+import com.geanbrandao.gean.conlubra.alert.DialogBox;
+import com.geanbrandao.gean.conlubra.connection.Operations;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class EntrarFragment extends Fragment {
+public class LoginFragment extends Fragment {
 
     private FirebaseAuth mAuth;
     private EditText mEmail, mSenha;
     private Button mLogin;
-    private CaixasDialogo dialogo;
+    private DialogBox dialogo;
 
-    public EntrarFragment() {
+    public LoginFragment() {
         // Required empty public constructor
     }
 
@@ -43,7 +42,7 @@ public class EntrarFragment extends Fragment {
         // firebase
         mAuth = FirebaseAuth.getInstance();
         //reference = FirebaseDatabase.getInstance().getReference().child("usuarios");
-        dialogo = new CaixasDialogo();
+        dialogo = new DialogBox();
         mEmail = view.findViewById(R.id.et_emailLogin);
         mSenha = view.findViewById(R.id.et_senhaLogin);
         mLogin = view.findViewById(R.id.b_login);
@@ -75,7 +74,7 @@ public class EntrarFragment extends Fragment {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // App code
-                Log.i("Facebook", "Perfil escolhido com sucesso");
+                Log.i("Facebook", "Profile escolhido com sucesso");
                 handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
@@ -144,7 +143,7 @@ public class EntrarFragment extends Fragment {
                             // verifica se o email ja foi verificado
                             if (mAuth.getCurrentUser().isEmailVerified()) {
                                 Log.i("EmailDeVerificacao", "Email foi verificado com sucesso");
-                                Operacoes.carregaUsuario(email);
+                                Operations.carregaUsuario(email);
                                 startActivity(new Intent(getContext(), LoadActivity.class));
                             } else {
                                 // manda o email de verificacao de novo e desloga o usuario

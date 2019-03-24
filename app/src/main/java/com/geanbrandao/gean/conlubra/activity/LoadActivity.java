@@ -8,10 +8,9 @@ import android.util.Log;
 
 import com.geanbrandao.gean.conlubra.Base64Custom;
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.conexao.InformacoesUsuario;
-import com.geanbrandao.gean.conlubra.conexao.InstanciasFirebase;
-import com.geanbrandao.gean.conlubra.conexao.Operacoes;
-import com.geanbrandao.gean.conlubra.modelo.Usuario;
+import com.geanbrandao.gean.conlubra.connection.UserInformation;
+import com.geanbrandao.gean.conlubra.connection.ConnectionFirebase;
+import com.geanbrandao.gean.conlubra.model.Usuario;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,17 +28,17 @@ public class LoadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load);
 
-        mAuth = InstanciasFirebase.getFirebaseAutenticacao();
+        mAuth = ConnectionFirebase.getFirebaseAutenticacao();
 
         if(mAuth.getCurrentUser() != null) {
             // vai carregar o usuario
-            FirebaseFirestore db = InstanciasFirebase.getFirebaseFirestore();
+            FirebaseFirestore db = ConnectionFirebase.getFirebaseFirestore();
             db.collection("usuarios")
                     .document(Base64Custom.codificarBase64(mAuth.getCurrentUser().getEmail()))
                     .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    InformacoesUsuario.user = documentSnapshot.toObject(Usuario.class);
+                    UserInformation.user = documentSnapshot.toObject(Usuario.class);
                     Log.i(TAG, "Sucesso ao carregar dados do usuário");
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 }

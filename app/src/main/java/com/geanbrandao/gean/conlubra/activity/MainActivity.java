@@ -20,14 +20,14 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.conexao.InformacoesUsuario;
-import com.geanbrandao.gean.conlubra.conexao.InstanciasFirebase;
-import com.geanbrandao.gean.conlubra.conexao.Operacoes;
-import com.geanbrandao.gean.conlubra.fragment.CadastrarFragment;
-import com.geanbrandao.gean.conlubra.fragment.EntrarFragment;
+import com.geanbrandao.gean.conlubra.connection.UserInformation;
+import com.geanbrandao.gean.conlubra.connection.ConnectionFirebase;
+import com.geanbrandao.gean.conlubra.connection.Operations;
+import com.geanbrandao.gean.conlubra.fragment.RegisterFragment;
+import com.geanbrandao.gean.conlubra.fragment.LoginFragment;
 import com.geanbrandao.gean.conlubra.fragment.FeedFragment;
-import com.geanbrandao.gean.conlubra.fragment.Perfil;
-import com.geanbrandao.gean.conlubra.fragment.ProgramacaoFragment;
+import com.geanbrandao.gean.conlubra.fragment.Profile;
+import com.geanbrandao.gean.conlubra.fragment.ProgrammingFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -35,15 +35,20 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private CadastrarFragment cadastrarFragment;
-    private EntrarFragment entrarFragment;
-    private Perfil perfilFragment;
+    private static final String PROFILE = "Perfil";
+    private static final String FEED = "Linha do Tempo";
+    private static final String PROGRAMMING = "Programação";
+
+
+    private RegisterFragment registerFragment;
+    private LoginFragment loginFragment;
+    private Profile profileFragment;
     private FeedFragment feedFragment;
-    private ProgramacaoFragment programacaoFragment;
+    private ProgrammingFragment programmingFragment;
     private FirebaseAuth mAuth;
 
-    private CircleImageView headerfotoPerfil;
-    private TextView headerNome, headerEmail;
+    private CircleImageView headerProfilePicture;
+    private TextView headerName, headerEmail;
     private Button editarPerfil;
 
 
@@ -54,11 +59,11 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        perfilFragment = new Perfil();
+        profileFragment = new Profile();
         feedFragment = new FeedFragment();
-        programacaoFragment = new ProgramacaoFragment();
+        programmingFragment = new ProgrammingFragment();
 
-        mAuth = InstanciasFirebase.getFirebaseAutenticacao();
+        mAuth = ConnectionFirebase.getFirebaseAutenticacao();
         //mAuth.signOut();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -72,22 +77,22 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View view = navigationView.getHeaderView(0);
         headerEmail = view.findViewById(R.id.tv_email_usuario_header);
-        headerNome = view.findViewById(R.id.tv_nome_usuario_header);
-        headerfotoPerfil = view.findViewById(R.id.civ_foto_perfil_header);
+        headerName = view.findViewById(R.id.tv_nome_usuario_header);
+        headerProfilePicture = view.findViewById(R.id.civ_foto_perfil_header);
 
 
         if (mAuth.getCurrentUser() != null) {
-            Operacoes.carregaUsuario(mAuth.getCurrentUser().getEmail());
+            Operations.carregaUsuario(mAuth.getCurrentUser().getEmail());
 
-            if (InformacoesUsuario.user.getImagemPerfilUrl() != null) {
+            if (UserInformation.user.getImagemPerfilUrl() != null) {
                 Glide.with(this)
-                        .load(InformacoesUsuario.user.getImagemPerfilUrl())
+                        .load(UserInformation.user.getImagemPerfilUrl())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(headerfotoPerfil);
+                        .into(headerProfilePicture);
             }
-            Log.i("Mainss", ""+InformacoesUsuario.user.getEmail());
-            headerEmail.setText(InformacoesUsuario.user.getEmail());
-            headerNome.setText(InformacoesUsuario.user.getNome());
+            Log.i("Mainss", ""+ UserInformation.user.getEmail());
+            headerEmail.setText(UserInformation.user.getEmail());
+            headerName.setText(UserInformation.user.getNome());
 
         }
 
@@ -100,7 +105,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        setTitle("Linha do Tempo");
+        setTitle(FEED);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.frameConteudo, feedFragment);
@@ -110,7 +115,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -147,22 +152,22 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_feed) {
-            setTitle("Linha do Tempo");
+            setTitle(FEED);
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.replace(R.id.frameConteudo, feedFragment);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_perfil) {
-            setTitle("Perfil");
+            setTitle(PROFILE);
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.replace(R.id.frameConteudo, perfilFragment);
+            fragmentTransaction.replace(R.id.frameConteudo, profileFragment);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_programacao) {
-            setTitle("Programção");
+            setTitle(PROGRAMMING);
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.replace(R.id.frameConteudo, programacaoFragment);
+            fragmentTransaction.replace(R.id.frameConteudo, programmingFragment);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_logout) {
             mAuth.signOut();

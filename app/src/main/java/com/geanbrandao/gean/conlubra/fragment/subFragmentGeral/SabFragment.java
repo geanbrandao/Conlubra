@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.adapter.ProgramacaoAdapter;
-import com.geanbrandao.gean.conlubra.modelo.ItemProgramacao;
+import com.geanbrandao.gean.conlubra.adapter.ProgrammingAdapter;
+import com.geanbrandao.gean.conlubra.model.ItemProgramacao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +21,16 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SabadoGeralFragment extends Fragment implements ProgramacaoAdapter.ProgramacaoAdapaterListener {
+public class SabFragment extends Fragment implements ProgrammingAdapter.ProgramacaoAdapaterListener {
 
     private final String USER_ID = "user01";
 
     private List<ItemProgramacao> programacao = new ArrayList<>();
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private ProgramacaoAdapter mAdapter;
+    private ProgrammingAdapter mAdapter;
 
-    public SabadoGeralFragment() {
+    public SabFragment() {
         // Required empty public constructor
     }
 
@@ -48,7 +48,7 @@ public class SabadoGeralFragment extends Fragment implements ProgramacaoAdapter.
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapter = new ProgramacaoAdapter(getContext(), programacao, this);
+        mAdapter = new ProgrammingAdapter(getContext(), programacao, this);
         recyclerView.setAdapter(mAdapter);
 
         return view;

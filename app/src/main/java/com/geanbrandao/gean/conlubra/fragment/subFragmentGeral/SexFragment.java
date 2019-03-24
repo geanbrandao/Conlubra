@@ -12,26 +12,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.adapter.ProgramacaoAdapter;
-import com.geanbrandao.gean.conlubra.modelo.ItemProgramacao;
+import com.geanbrandao.gean.conlubra.adapter.ProgrammingAdapter;
+import com.geanbrandao.gean.conlubra.model.ItemProgramacao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class QuartaGeralFragment extends Fragment implements ProgramacaoAdapter.ProgramacaoAdapaterListener {
 
-    private final String USER_ID = "user01";
+public class SexFragment extends Fragment implements ProgrammingAdapter.ProgramacaoAdapaterListener {
 
     private List<ItemProgramacao> programacao = new ArrayList<>();
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private ProgramacaoAdapter mAdapter;
+    private ProgrammingAdapter mAdapter;
 
-
-    public QuartaGeralFragment() {
+    public SexFragment() {
         // Required empty public constructor
     }
 
@@ -40,76 +35,55 @@ public class QuartaGeralFragment extends Fragment implements ProgramacaoAdapter.
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_quarta_geral, container, false);
+        View view = inflater.inflate(R.layout.fragment_sexta_geral, container, false);
 
-        recyclerView = view.findViewById(R.id.rv_quarta_geral);
+        recyclerView = view.findViewById(R.id.rv_sexta_geral);
 
-        getProgramacao();
+        getProgramcao();
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapter = new ProgramacaoAdapter(getContext(), programacao, this);
+        mAdapter = new ProgrammingAdapter(getContext(), programacao, this);
         recyclerView.setAdapter(mAdapter);
+
 
         return view;
     }
 
     @Override
-    public void onItemClicked(int i) {
-        // abre a tela de detalhes do item da programacap
+    public void onItemClicked(int position) {
+
     }
 
     @Override
-    public void onFavoritoCliked(int i, boolean like) {
-        /*if(like){ // tira id do user da lista
+    public void onFavoritoCliked(int position, boolean like) {
 
-            List<String> listaAuxiliar = new ArrayList<>();
-            for(String id: programacao.get(i).getFavoritadoPor()) {
-                if(!id.equals(USER_ID)){
-                  listaAuxiliar.add(id);
-                }
-            }
-            // limpa a lista anterior e grava a nova
-            programacao.get(i).getFavoritadoPor().clear();
-            programacao.get(i).setFavoritadoPor(listaAuxiliar);
-
-        } else { // add user na lista
-            List<String> listaAuxiliar = new ArrayList<>();
-            listaAuxiliar.add(USER_ID);
-            programacao.get(i).setFavoritadoPor(listaAuxiliar);
-        }*/
     }
 
 
-    private void getProgramacao() {
+    private void getProgramcao() {
         programacao.clear();
         // add programacao estatica
         ItemProgramacao p = new ItemProgramacao();
-        p.setNome("Palestra 1");
+        p.setNome("Palestra 8");
         p.setHora("15:00 - 15:30");
         p.setLocal("Sala 102");
         p.setDetalhes("Palestra sobre palestra sobree");
         programacao.add(p);
 
         p = new ItemProgramacao();
-        p.setNome("Palestra 3");
+        p.setNome("Palestra 9");
         p.setHora("18:00 - 18:30");
         p.setLocal("Sala 132");
         p.setDetalhes("Palestra sobre palestra sobreeada ");
         programacao.add(p);
 
         p = new ItemProgramacao();
-        p.setNome("Palestra 2");
+        p.setNome("Palestra 10");
         p.setHora("11:00 - 11:30");
         p.setLocal("Sala 112");
         p.setDetalhes("Palestra sobre palestra sobreada ad e");
         programacao.add(p);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        // Upa as mudancas para o servidor
     }
 }

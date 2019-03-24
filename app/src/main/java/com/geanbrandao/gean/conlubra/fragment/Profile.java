@@ -20,10 +20,10 @@ import android.widget.EditText;
 import com.geanbrandao.gean.conlubra.DownloadImageTask;
 import com.geanbrandao.gean.conlubra.Permissao;
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.conexao.InformacoesUsuario;
-import com.geanbrandao.gean.conlubra.conexao.InstanciasFirebase;
-import com.geanbrandao.gean.conlubra.conexao.Operacoes;
-import com.geanbrandao.gean.conlubra.modelo.Usuario;
+import com.geanbrandao.gean.conlubra.connection.UserInformation;
+import com.geanbrandao.gean.conlubra.connection.ConnectionFirebase;
+import com.geanbrandao.gean.conlubra.connection.Operations;
+import com.geanbrandao.gean.conlubra.model.Usuario;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,7 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.app.Activity.RESULT_OK;
 
-public class Perfil extends Fragment {
+public class Profile extends Fragment {
 
     private static final int SELECAO_CAMERA = 100;
     private static final int SELECAO_GALERIA = 200;
@@ -46,17 +46,17 @@ public class Perfil extends Fragment {
             Manifest.permission.CAMERA
     };
 
-    private Usuario usuarioAux;
-    private InformacoesUsuario iu;
-    private String identificadorUsuario;
-    private StorageReference storageReference, imagemRef;
+    private Usuario userAux;
+    private UserInformation iu;
+    private String identifierUser;
+    private StorageReference storageReference, imgRef;
 
-    private FloatingActionButton fabSalvarPerfil;
-    private EditText edNome, edEmail, edInstituicao, edCargo;
-    private CircleImageView civFotoPerfilPerfil;
-    private Button bGaleria, bCamera;
+    private FloatingActionButton fabSaveProfile;
+    private EditText edName, edEmail, edInstitution, edOffice;
+    private CircleImageView civProfilePicture;
+    private Button bGallery, bCamera;
 
-    public Perfil() {
+    public Profile() {
         // Required empty public constructor
     }
 
@@ -67,43 +67,43 @@ public class Perfil extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
-        usuarioAux = new Usuario();
-        iu = new InformacoesUsuario();
-        identificadorUsuario = InformacoesUsuario.user.getIdUsuario();
-        storageReference = InstanciasFirebase.getFirebaseStorage();
-        imagemRef = InstanciasFirebase.getFirebaseStorage();
+        userAux = new Usuario();
+        iu = new UserInformation();
+        identifierUser = UserInformation.user.getIdUsuario();
+        storageReference = ConnectionFirebase.getFirebaseStorage();
+        imgRef = ConnectionFirebase.getFirebaseStorage();
 
-        fabSalvarPerfil = view.findViewById(R.id.fab_salvar_perfil);
-        edNome = view.findViewById(R.id.edNome);
+        fabSaveProfile = view.findViewById(R.id.fab_salvar_perfil);
+        edName = view.findViewById(R.id.edNome);
         edEmail = view.findViewById(R.id.edEmail);
-        edCargo = view.findViewById(R.id.edCargo);
-        edInstituicao = view.findViewById(R.id.edInstituicao);
-        civFotoPerfilPerfil = view.findViewById(R.id.civFotoPerfilFeed);
-        bGaleria = view.findViewById(R.id.bGaleria);
+        edOffice = view.findViewById(R.id.edCargo);
+        edInstitution = view.findViewById(R.id.edInstituicao);
+        civProfilePicture = view.findViewById(R.id.civFotoPerfilFeed);
+        bGallery = view.findViewById(R.id.bGaleria);
         bCamera = view.findViewById(R.id.bCamera);
 
-        edNome.setText(InformacoesUsuario.user.getNome());
-        edInstituicao.setText(InformacoesUsuario.user.getInstituicao());
-        edEmail.setText(InformacoesUsuario.user.getEmail());
-        edCargo.setText(InformacoesUsuario.user.getCargo());
+        edName.setText(UserInformation.user.getNome());
+        edInstitution.setText(UserInformation.user.getInstituicao());
+        edEmail.setText(UserInformation.user.getEmail());
+        edOffice.setText(UserInformation.user.getCargo());
 
         //Validar permissões
         Permissao.validarPermissoes(permissoesNecessarias, getActivity(), 1);
 
-        if (InformacoesUsuario.user.getImagemPerfilUrl() != null) {
-            new DownloadImageTask(civFotoPerfilPerfil)
-                    .execute(InformacoesUsuario.user.getImagemPerfilUrl());
+        if (UserInformation.user.getImagemPerfilUrl() != null) {
+            new DownloadImageTask(civProfilePicture)
+                    .execute(UserInformation.user.getImagemPerfilUrl());
         }
 
 
-        fabSalvarPerfil.setOnClickListener(new View.OnClickListener() {
+        fabSaveProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 informacoesPerfil();
             }
         });
 
-        bGaleria.setOnClickListener(new View.OnClickListener() {
+        bGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -127,14 +127,14 @@ public class Perfil extends Fragment {
     }
 
     private void informacoesPerfil() {
-        String nome = edNome.getText().toString().trim();
+        String nome = edName.getText().toString().trim();
         String email = edEmail.getText().toString().trim();
-        String instituicao = edInstituicao.getText().toString().trim();
-        String cargo = edCargo.getText().toString().trim();
+        String instituicao = edInstitution.getText().toString().trim();
+        String cargo = edOffice.getText().toString().trim();
 
         if (nome.isEmpty()) {
-            edNome.setError("Digite um nome");
-            edNome.requestFocus();
+            edName.setError("Digite um nome");
+            edName.requestFocus();
             return;
         }
 
@@ -144,17 +144,17 @@ public class Perfil extends Fragment {
             return;
         }
 
-        usuarioAux.setNome(nome);
-        usuarioAux.setEmail(email);
-        usuarioAux.setCargo(cargo);
-        usuarioAux.setInstituicao(instituicao);
+        userAux.setNome(nome);
+        userAux.setEmail(email);
+        userAux.setCargo(cargo);
+        userAux.setInstituicao(instituicao);
 
-        InformacoesUsuario.user.setNome(usuarioAux.getNome());
-        InformacoesUsuario.user.setEmail(usuarioAux.getEmail());
-        InformacoesUsuario.user.setCargo(usuarioAux.getCargo());
-        InformacoesUsuario.user.setInstituicao(usuarioAux.getInstituicao());
+        UserInformation.user.setNome(userAux.getNome());
+        UserInformation.user.setEmail(userAux.getEmail());
+        UserInformation.user.setCargo(userAux.getCargo());
+        UserInformation.user.setInstituicao(userAux.getInstituicao());
 
-        Operacoes.criarUsuario(InformacoesUsuario.user);
+        Operations.criarUsuario(UserInformation.user);
         getFragmentManager().popBackStack();
 
     }
@@ -181,7 +181,7 @@ public class Perfil extends Fragment {
 
                 if (imagem != null) {
 
-                    civFotoPerfilPerfil.setImageBitmap(imagem);
+                    civProfilePicture.setImageBitmap(imagem);
 
                     //Recuperar dados da imagem para o firebase
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -189,13 +189,13 @@ public class Perfil extends Fragment {
                     byte[] dadosImagem = baos.toByteArray();
 
                     //Salvar imagem no firebase
-                    imagemRef = storageReference
+                    imgRef = storageReference
                             .child("imagens")
                             .child("perfil")
-                            .child( identificadorUsuario )
-                            .child(identificadorUsuario + ".jpeg");
+                            .child( identifierUser )
+                            .child(identifierUser + ".jpeg");
 
-                    UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
+                    UploadTask uploadTask = imgRef.putBytes(dadosImagem);
                     uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -216,7 +216,7 @@ public class Perfil extends Fragment {
                             }
 
                             // Continue with the task to get the download URL
-                            return imagemRef.getDownloadUrl();
+                            return imgRef.getDownloadUrl();
                         }
                     }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                         @Override
@@ -229,9 +229,9 @@ public class Perfil extends Fragment {
                                     return;
                                 } else {
                                     Log.i("Updateimagem", "Uri não nulla");
-                                    InformacoesUsuario.user.setImagemPerfilUrl(downloadUri.toString());
+                                    UserInformation.user.setImagemPerfilUrl(downloadUri.toString());
                                     iu.atualizaFotoDePerfilUsuario(downloadUri.toString());
-                                    Operacoes.updateFotoPerfilUrl(downloadUri.toString());
+                                    Operations.updateFotoPerfilUrl(downloadUri.toString());
                                 }
                             }
                         }

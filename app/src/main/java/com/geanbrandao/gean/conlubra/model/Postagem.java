@@ -1,4 +1,4 @@
-package com.geanbrandao.gean.conlubra.modelo;
+package com.geanbrandao.gean.conlubra.model;
 
 import com.google.firebase.firestore.ServerTimestamp;
 

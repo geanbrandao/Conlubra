@@ -1,4 +1,4 @@
-package com.geanbrandao.gean.conlubra.conexao;
+package com.geanbrandao.gean.conlubra.connection;
 
 
 import android.content.Context;
@@ -6,8 +6,9 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.geanbrandao.gean.conlubra.alerta.MensagemAviso;
-import com.geanbrandao.gean.conlubra.modelo.Usuario;
+import com.geanbrandao.gean.conlubra.alert.MensagemAviso;
+import com.geanbrandao.gean.conlubra.model.Postagem;
+import com.geanbrandao.gean.conlubra.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -16,16 +17,17 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 // classe para lidar apenas com o authentication
-public class InformacoesUsuario {
-    private final static String TAG = "InformacoesUsuario";
+public class UserInformation {
+    private final static String TAG = "UserInformation";
 
     private FirebaseAuth mAuth;
     private String email;
-    private String nome;
-    private String urlFotoPerfil;
+    private String name;
+    private String urlProfilePicture;
     public static Usuario user;
+    public static Postagem post;
 
-    public InformacoesUsuario() {
+    public UserInformation() {
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -124,13 +126,13 @@ public class InformacoesUsuario {
     }
 
     public String getNome() {
-        nome = mAuth.getCurrentUser().getDisplayName();
-        return nome;
+        name = mAuth.getCurrentUser().getDisplayName();
+        return name;
     }
 
     public String getUrlFotoPerfil() {
-        urlFotoPerfil = mAuth.getCurrentUser().getPhotoUrl().toString();
-        return urlFotoPerfil;
+        urlProfilePicture = mAuth.getCurrentUser().getPhotoUrl().toString();
+        return urlProfilePicture;
     }
 
     public void signOut() {

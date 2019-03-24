@@ -1,4 +1,4 @@
-package com.geanbrandao.gean.conlubra.conexao;
+package com.geanbrandao.gean.conlubra.connection;
 
 import android.util.Log;
 
@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-public class InstanciasFirebase {
+public class ConnectionFirebase {
 
     private static FirebaseFirestore firestore;
     private static FirebaseAuth auth;

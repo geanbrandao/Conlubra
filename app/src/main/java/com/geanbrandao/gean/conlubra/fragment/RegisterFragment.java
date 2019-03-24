@@ -17,8 +17,8 @@ import android.widget.Toast;
 import com.geanbrandao.gean.conlubra.Base64Custom;
 import com.geanbrandao.gean.conlubra.R;
 import com.geanbrandao.gean.conlubra.activity.LoginActivity;
-import com.geanbrandao.gean.conlubra.conexao.Operacoes;
-import com.geanbrandao.gean.conlubra.modelo.Usuario;
+import com.geanbrandao.gean.conlubra.connection.Operations;
+import com.geanbrandao.gean.conlubra.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -27,16 +27,16 @@ import com.google.firebase.auth.FirebaseAuth;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CadastrarFragment extends Fragment {
+public class RegisterFragment extends Fragment {
 
     private final static String TAG = "CadastrarUsuario";
 
-    private EditText mNome, mEmail, mConfirmarSenha, mSenha;
-    private Button mCadastrar;
+    private EditText mName, mEmail, mConfirmPassword, mPassword;
+    private Button mRegister;
     private FirebaseAuth mAuth;
-    private Usuario usuario;
+    private Usuario user;
 
-    public CadastrarFragment() {
+    public RegisterFragment() {
         // Required empty public constructor
     }
 
@@ -49,13 +49,13 @@ public class CadastrarFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
 
-        mNome = view.findViewById(R.id.et_nomeCad);
-        mSenha = view.findViewById(R.id.et_senhaCad);
+        mName = view.findViewById(R.id.et_nomeCad);
+        mPassword = view.findViewById(R.id.et_senhaCad);
         mEmail = view.findViewById(R.id.et_emailCad);
-        mConfirmarSenha = view.findViewById(R.id.et_confirmarSenhaCad);
-        mCadastrar = view.findViewById(R.id.b_cadastrar);
+        mConfirmPassword = view.findViewById(R.id.et_confirmarSenhaCad);
+        mRegister = view.findViewById(R.id.b_cadastrar);
 
-        mCadastrar.setOnClickListener(new View.OnClickListener() {
+        mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 novoUsuario();
@@ -67,9 +67,9 @@ public class CadastrarFragment extends Fragment {
 
     private void novoUsuario() {
         String email = mEmail.getText().toString().trim();
-        String senha = mSenha.getText().toString().trim();
-        String nome = mNome.getText().toString().trim();
-        String confirmarSenha = mConfirmarSenha.getText().toString().trim();
+        String senha = mPassword.getText().toString().trim();
+        String nome = mName.getText().toString().trim();
+        String confirmarSenha = mConfirmPassword.getText().toString().trim();
 
 
         if (email.isEmpty()) {
@@ -79,8 +79,8 @@ public class CadastrarFragment extends Fragment {
         }
 
         if (nome.isEmpty()) {
-            mNome.setError("Digite o seu nome.");
-            mNome.requestFocus();
+            mName.setError("Digite o seu nome.");
+            mName.requestFocus();
             return;
         }
 
@@ -91,42 +91,42 @@ public class CadastrarFragment extends Fragment {
         }
 
         if (senha.isEmpty()) {
-            mSenha.setError("Digite a senha.");
-            mSenha.requestFocus();
+            mPassword.setError("Digite a senha.");
+            mPassword.requestFocus();
             return;
         }
 
         if (senha.length() < 6) {
-            mSenha.setError("O tamanho minimo da senha é 6");
-            mSenha.requestFocus();
+            mPassword.setError("O tamanho minimo da senha é 6");
+            mPassword.requestFocus();
             return;
         }
 
 
         if (confirmarSenha.isEmpty()) {
-            mConfirmarSenha.setError("Confirme sua senha por favor");
-            mConfirmarSenha.requestFocus();
+            mConfirmPassword.setError("Confirme sua senha por favor");
+            mConfirmPassword.requestFocus();
             return;
         }
 
         if (!confirmarSenha.equals(senha)) {
-            mConfirmarSenha.setError("As senhas não correpondem");
-            mConfirmarSenha.requestFocus();
+            mConfirmPassword.setError("As senhas não correpondem");
+            mConfirmPassword.requestFocus();
             return;
         }
 
-        usuario = new Usuario();
-        usuario.setEmail(email);
-        usuario.setNome(nome);
-        usuario.setIdUsuario(Base64Custom.codificarBase64(email));
-        usuario.setImagemPerfilUrl(null);
-        usuario.setContadorPostagem(0);
-        usuario.setContadorComentario(0);
-        usuario.setIdsComentario(null);
-        usuario.setIdsComentarioCurtidos(null);
-        usuario.setIdsItensFavoritos(null);
-        usuario.setIdsPostagemCurtidas(null);
-        usuario.setIdsPostagens(null);
+        user = new Usuario();
+        user.setEmail(email);
+        user.setNome(nome);
+        user.setIdUsuario(Base64Custom.codificarBase64(email));
+        user.setImagemPerfilUrl(null);
+        user.setContadorPostagem(0);
+        user.setContadorComentario(0);
+        user.setIdsComentario(null);
+        user.setIdsComentarioCurtidos(null);
+        user.setIdsItensFavoritos(null);
+        user.setIdsPostagemCurtidas(null);
+        user.setIdsPostagens(null);
 
 
         mAuth.createUserWithEmailAndPassword(email, senha)
@@ -145,7 +145,7 @@ public class CadastrarFragment extends Fragment {
                                         Log.i("EmailDeVerificacao", "Email enviado com sucesso");
                                         // desloga o usuario para que ele possa fazer login novamente
                                         mAuth.signOut();
-                                        Operacoes.criarUsuario(usuario);
+                                        Operations.criarUsuario(user);
                                         startActivity(new Intent(getContext(), LoginActivity.class));
                                     }
                                 }

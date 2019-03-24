@@ -1,30 +1,28 @@
-package com.geanbrandao.gean.conlubra.alerta;
+package com.geanbrandao.gean.conlubra.alert;
 
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.conexao.InformacoesUsuario;
+import com.geanbrandao.gean.conlubra.connection.UserInformation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 // classe responsavel por criar e mostras mensagem para o usuario
-public class CaixasDialogo {
+public class DialogBox {
 
-    private final static String TAG = "CaixasDialogo";
+    private final static String TAG = "DialogBox";
 
     private AlertDialog.Builder verificarEmail;
-    private InformacoesUsuario iu;
+    private UserInformation iu;
 
-    public CaixasDialogo() {
-        iu = new InformacoesUsuario();
+    public DialogBox() {
+        iu = new UserInformation();
     }
 
     public void caixaVerificarEmail(Context context){

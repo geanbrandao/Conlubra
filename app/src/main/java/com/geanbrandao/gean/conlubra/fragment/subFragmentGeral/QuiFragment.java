@@ -12,21 +12,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.adapter.ProgramacaoAdapter;
-import com.geanbrandao.gean.conlubra.modelo.ItemProgramacao;
+import com.geanbrandao.gean.conlubra.adapter.ProgrammingAdapter;
+import com.geanbrandao.gean.conlubra.model.ItemProgramacao;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class QuintaGeralFragment extends Fragment implements ProgramacaoAdapter.ProgramacaoAdapaterListener {
+public class QuiFragment extends Fragment implements ProgrammingAdapter.ProgramacaoAdapaterListener {
 
     private List<ItemProgramacao> programacao = new ArrayList<>();
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private ProgramacaoAdapter mAdapter;
+    private ProgrammingAdapter mAdapter;
 
-    public QuintaGeralFragment() {
+    public QuiFragment() {
         // Required empty public constructor
     }
 
@@ -45,7 +45,7 @@ public class QuintaGeralFragment extends Fragment implements ProgramacaoAdapter.
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        mAdapter = new ProgramacaoAdapter(getContext(), programacao, this);
+        mAdapter = new ProgrammingAdapter(getContext(), programacao, this);
         recyclerView.setAdapter(mAdapter);
 
 

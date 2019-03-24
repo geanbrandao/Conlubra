@@ -1,7 +1,8 @@
-package com.geanbrandao.gean.conlubra.modelo;
+package com.geanbrandao.gean.conlubra.model;
 
-import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.ServerTimestamp;
 
+import java.util.Date;
 import java.util.List;
 
 // colecao comentario
@@ -9,8 +10,10 @@ public class Comentario {
 
     private String idComentario; // indide
 
-    private String autorComentario; // idUsuario
-    private FieldValue dataComentario;
+    private String nomeAutorComentario; // idUsuario
+    private String fotoAutorPostagem;
+    @ServerTimestamp
+    private Date dataComentario;
     private String conteudoComentario;
     private int contadorLikesComentario;
     private List<String> likesComentarioIdUsuario;
@@ -18,9 +21,10 @@ public class Comentario {
     public Comentario() {
     }
 
-    public Comentario(String idComentario, String autorComentario, FieldValue dataComentario, String conteudoComentario, int contadorLikesComentario, List<String> likesComentarioIdUsuario) {
+    public Comentario(String idComentario, String nomeAutorComentario, String fotoAutorPostagem, Date dataComentario, String conteudoComentario, int contadorLikesComentario, List<String> likesComentarioIdUsuario) {
         this.idComentario = idComentario;
-        this.autorComentario = autorComentario;
+        this.nomeAutorComentario = nomeAutorComentario;
+        this.fotoAutorPostagem = fotoAutorPostagem;
         this.dataComentario = dataComentario;
         this.conteudoComentario = conteudoComentario;
         this.contadorLikesComentario = contadorLikesComentario;
@@ -35,12 +39,20 @@ public class Comentario {
         this.idComentario = idComentario;
     }
 
-    public String getAutorComentario() {
-        return autorComentario;
+    public String getNomeAutorComentario() {
+        return nomeAutorComentario;
     }
 
-    public void setAutorComentario(String autorComentario) {
-        this.autorComentario = autorComentario;
+    public void setNomeAutorComentario(String nomeAutorComentario) {
+        this.nomeAutorComentario = nomeAutorComentario;
+    }
+
+    public String getFotoAutorPostagem() {
+        return fotoAutorPostagem;
+    }
+
+    public void setFotoAutorPostagem(String fotoAutorPostagem) {
+        this.fotoAutorPostagem = fotoAutorPostagem;
     }
 
     public String getConteudoComentario() {
@@ -67,11 +79,11 @@ public class Comentario {
         this.likesComentarioIdUsuario = likesComentarioIdUsuario;
     }
 
-    public FieldValue getDataComentario() {
+    public Date getDataComentario() {
         return dataComentario;
     }
 
-    public void setDataComentario(FieldValue dataComentario) {
+    public void setDataComentario(Date dataComentario) {
         this.dataComentario = dataComentario;
     }
 }

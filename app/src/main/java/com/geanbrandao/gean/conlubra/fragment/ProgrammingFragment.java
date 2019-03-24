@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.fragment.subFragmentGeral.QuartaGeralFragment;
-import com.geanbrandao.gean.conlubra.fragment.subFragmentGeral.QuintaGeralFragment;
-import com.geanbrandao.gean.conlubra.fragment.subFragmentGeral.SabadoGeralFragment;
-import com.geanbrandao.gean.conlubra.fragment.subFragmentGeral.SextaGeralFragment;
+import com.geanbrandao.gean.conlubra.fragment.subFragmentGeral.QuaFragment;
+import com.geanbrandao.gean.conlubra.fragment.subFragmentGeral.QuiFragment;
+import com.geanbrandao.gean.conlubra.fragment.subFragmentGeral.SabFragment;
+import com.geanbrandao.gean.conlubra.fragment.subFragmentGeral.SexFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
@@ -20,13 +20,13 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProgramacaoFragment extends Fragment {
+public class ProgrammingFragment extends Fragment {
 
 
-    private ViewPager viewPagerProgramacao;
-    private SmartTabLayout smartTabLayoutProgramacao;
+    private ViewPager viewPagerProgramming;
+    private SmartTabLayout smartTabLayoutProgramming;
 
-    public ProgramacaoFragment() {
+    public ProgrammingFragment() {
         // Required empty public constructor
     }
 
@@ -37,21 +37,21 @@ public class ProgramacaoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_programacao, container, false);
 
-        viewPagerProgramacao = view.findViewById(R.id.viewPagerTabProgramacao);
-        smartTabLayoutProgramacao = view.findViewById(R.id.smartTabProgramacao);
+        viewPagerProgramming = view.findViewById(R.id.viewPagerTabProgramacao);
+        smartTabLayoutProgramming = view.findViewById(R.id.smartTabProgramacao);
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getFragmentManager(), FragmentPagerItems.with(getContext())
-                .add("Qua - 28", QuartaGeralFragment.class)
-                .add("Qui - 29", QuintaGeralFragment.class)
-                .add("Sex - 30", SextaGeralFragment.class)
-                .add("Sab - 31", SabadoGeralFragment.class)
+                .add("Qua - 28", QuaFragment.class)
+                .add("Qui - 29", QuiFragment.class)
+                .add("Sex - 30", SexFragment.class)
+                .add("Sab - 31", SabFragment.class)
                 .create()
         );
         // seta o adapter, recebe os fragments no view pager
-        viewPagerProgramacao.setAdapter(adapter);
+        viewPagerProgramming.setAdapter(adapter);
         // configura
-        smartTabLayoutProgramacao.setViewPager(viewPagerProgramacao);
+        smartTabLayoutProgramming.setViewPager(viewPagerProgramming);
 
         return view;
     }
