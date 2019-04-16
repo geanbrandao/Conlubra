@@ -8,7 +8,7 @@ import java.util.List;
 // colecao comentario
 public class Comentario {
 
-    private String idComentario; // indide
+    private String idComentario; // indice
 
     private String nomeAutorComentario; // idUsuario
     private String fotoAutorPostagem;

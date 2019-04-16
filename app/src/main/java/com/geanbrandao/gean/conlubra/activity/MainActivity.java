@@ -19,10 +19,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.geanbrandao.gean.conlubra.InformationsFragment;
+import com.geanbrandao.gean.conlubra.LocationFragment;
 import com.geanbrandao.gean.conlubra.R;
 import com.geanbrandao.gean.conlubra.connection.UserInformation;
 import com.geanbrandao.gean.conlubra.connection.ConnectionFirebase;
 import com.geanbrandao.gean.conlubra.connection.Operations;
+import com.geanbrandao.gean.conlubra.fragment.PatrocinioFragment;
 import com.geanbrandao.gean.conlubra.fragment.RegisterFragment;
 import com.geanbrandao.gean.conlubra.fragment.LoginFragment;
 import com.geanbrandao.gean.conlubra.fragment.FeedFragment;
@@ -44,7 +47,11 @@ public class MainActivity extends AppCompatActivity
     private LoginFragment loginFragment;
     private Profile profileFragment;
     private FeedFragment feedFragment;
+    private LocationFragment locationFragment;
     private ProgrammingFragment programmingFragment;
+    private InformationsFragment informationsFragment;
+    private PatrocinioFragment patrocinioFragment;
+
     private FirebaseAuth mAuth;
 
     private CircleImageView headerProfilePicture;
@@ -62,7 +69,11 @@ public class MainActivity extends AppCompatActivity
         profileFragment = new Profile();
         feedFragment = new FeedFragment();
         programmingFragment = new ProgrammingFragment();
+        locationFragment = new LocationFragment();
+        informationsFragment = new InformationsFragment();
+        patrocinioFragment = new PatrocinioFragment();
 
+        setTitle("");
         mAuth = ConnectionFirebase.getFirebaseAutenticacao();
         //mAuth.signOut();
 
@@ -105,7 +116,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        setTitle(FEED);
+        //setTitle(FEED);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.frameConteudo, feedFragment);
@@ -152,25 +163,40 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_feed) {
-            setTitle(FEED);
+            //setTitle(FEED);
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.replace(R.id.frameConteudo, feedFragment);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_perfil) {
-            setTitle(PROFILE);
+            //setTitle(PROFILE);
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.replace(R.id.frameConteudo, profileFragment);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_programacao) {
-            setTitle(PROGRAMMING);
+            //setTitle(PROGRAMMING);
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.replace(R.id.frameConteudo, programmingFragment);
             fragmentTransaction.commit();
         } else if (id == R.id.nav_logout) {
             mAuth.signOut();
+        } else if (id == R.id.nav_mapa) {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.frameConteudo, locationFragment);
+            fragmentTransaction.commit();
+        } else if (id == R.id.nav_informacoes) {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.frameConteudo, informationsFragment);
+            fragmentTransaction.commit();
+        } else if (id == R.id.nav_patrocinio) {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.frameConteudo, patrocinioFragment);
+            fragmentTransaction.commit();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

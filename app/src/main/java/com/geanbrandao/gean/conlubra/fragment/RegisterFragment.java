@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.geanbrandao.gean.conlubra.Base64Custom;
+import com.geanbrandao.gean.conlubra.utils.Base64Custom;
 import com.geanbrandao.gean.conlubra.R;
 import com.geanbrandao.gean.conlubra.activity.LoginActivity;
 import com.geanbrandao.gean.conlubra.connection.Operations;

@@ -1,4 +1,4 @@
-package com.geanbrandao.gean.conlubra;
+package com.geanbrandao.gean.conlubra.utils;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@color/colorBackgroundLayout">
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,101 +14,153 @@
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civFotoPerfilPublicacao"
+            android:id="@+id/civ_profile_publication"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="5dp" />
+            android:layout_marginEnd="8dp" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvPublicacaoNome"
+                android:id="@+id/tv_name_publication"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="sans-serif-medium"
                 android:text="@string/s_nome"
                 android:textColor="@color/colorBlack"
-                android:textSize="14sp"
+                android:textSize="@dimen/nome_size"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvPublicacaoData"
+                android:id="@+id/tv_date_publication"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="sans-serif"
                 android:text="@string/s_data"
-                android:textColor="@color/colorBlack"
-                android:textSize="12sp" />
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/data_size" />
 
-            <TextView
-                android:id="@+id/tvPublicacao"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="@string/s_publicacao"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ivFotoPublicacao"
+    <TextView
+        android:id="@+id/tv_publication_publication"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_edit_text"
+        android:fontFamily="sans-serif-light"
+        android:padding="5dp"
+        android:text="@string/s_publicacao"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/publicacao_size" />
+
+    <ImageView
+        android:id="@+id/iv_picture_publication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:contentDescription="@string/s_content_description_publicacao"
         android:scaleType="fitCenter" />
 
     <LinearLayout
+        android:id="@+id/LL_interaction"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        android:paddingStart="5dp"
+        android:paddingTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <TextView
-            android:id="@+id/tvPublicacaoContadorLikes"
+        <LinearLayout
+            android:id="@+id/LL_curtir_publication"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="60dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
             android:gravity="center"
-            android:padding="2dp"
-            android:text="@string/s_numero_zero" />
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/bPublicacaoLikes"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/ic_favorite_border_black_24dp"
-            android:gravity="center"
-            android:padding="2dp" />
+            <TextView
+                android:id="@+id/tv_likes_publication"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="@string/s_numero_zero"
+                android:textSize="@dimen/data_size" />
+
+            <Button
+                android:id="@+id/b_like_publication"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_favorite_border_black_24dp"
+                android:gravity="center"
+                android:padding="2dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:text="@string/s_likes"
+                android:textSize="@dimen/data_size" />
+        </LinearLayout>
 
         <View
             android:id="@+id/divider"
             android:layout_width="2dp"
             android:layout_height="match_parent"
-            android:background="@color/colorBlack" />
+            android:background="@color/colorPrimaryDark" />
 
-        <TextView
-            android:id="@+id/tvPublicacaoContadorComentarios"
+        <LinearLayout
+            android:id="@+id/LL_comentario_publication"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:background="@color/colorWhite"
             android:gravity="center"
-            android:padding="2dp"
-            android:text="@string/s_numero_zero" />
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/bPublicacaoComentarios"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:background="@drawable/ic_comment_black_24dp"
-            android:padding="2dp" />
+            <TextView
+                android:id="@+id/tv_comment_publication"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="@string/s_numero_zero"
+                android:textSize="@dimen/data_size" />
+
+            <Button
+                android:id="@+id/b_comment_publication"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_comment_black_24dp"
+                android:padding="2dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/s_comment"
+                android:textSize="@dimen/data_size" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <include layout="@layout/divisor" />

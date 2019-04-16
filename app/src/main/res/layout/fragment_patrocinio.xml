@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.PatrocinioFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif-medium"
+            android:text="APOIADORES E PARCEIROS"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Prefeitura Municipal de Pelotas\nPrefeitura Municipal de Bagé\nUniversidade Federal do Pampa (UNIPAMPA)\nUniversidade Federal do Rio Grande (FURG)\nUniversidade Federal de Santa Maria (UFSM)\nUniversidade Federal de Santa Catarina (UFSC)\nUniversidade Estadual de Santa Catarina (UDESC)\nUniversidade Estadual do Rio Grande do Sul (UERGS)\nUniversidade Federal do Paraná (UFPR - campus Matinhos)\nCentro de Neurodesenvolvimento da UFPel\nCentro de Atendimento ao Autismo Prof Dr. Danilo Rolim de Moura\nCoordenação de Diversidade e Inclusão\UFPEL\nSaber Incluir\ncodePampa\nRaphael Marcelino – Ueek Agência digital"
+            android:textColor="@color/colorBlack"
+            android:lineSpacingExtra="4dp"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

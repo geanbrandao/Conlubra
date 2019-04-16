@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InformationsFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/s_information1"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/s_information2"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/s_information3"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/s_information4"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/s_information5"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimaryDark"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/s_information6"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:autoLink="web"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/s_information7"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/s_information8"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/s_information9"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/s_information10"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/s_information11"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/s_information12"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:autoLink="web"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/s_information13"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/s_information14"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/s_information15"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/s_information16"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/s_information17"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/s_information18"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/s_information19"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="16dp"
+                        android:divider="@color/colorBlack"
+                        android:showDividers="middle"
+                        android:stretchColumns="1">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:padding="2dp"
+                                android:text="Eixo Temático"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:padding="2dp"
+                                android:text="Coordenador do eixo temático"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:padding="2dp"
+                                android:text="Membros do comitê"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="1. Políticas Públicas para Pessoas com Deficiência (PCD)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="Renato Duro e Simone Anadon (FURG)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="6dp"
+                                android:text="Renato Duro (FURG)\nSimone Anadon (FURG)\nAna Paula Loução Martins (CIEd, Uminho/ Portugal)\nLuzia Lima Rodrigues (Escola Superior de Educação do Instituto Politécnico de Setúbal, Portugal)\nMarlene Rozek (PUC/RS)\nSusana Marinho (Universidade Fernando Pessoa – Porto/Portugal)\nJaqueline Lidorio de Mattia (UERGS)\nViviane Castro Camozzato (UERGS)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="2 – Formação de Professores para Inclusão"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="Veronice Camargo da Silva (UERGS)" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="6dp"
+                                android:text="Anabela Cruz Santos (CIEd, Uminho/ Portugal)\nAna Paula Loução Martins (CIEd, Uminho/ Portugal)\nLuzia Lima Rodrigues (Escola Superior de Educação do Instituto Politécnico de Setúbal, Portugal)\n\Susana Marinho (Universidade Fernando Pessoa – Porto/Portugal)\nHelena Venites Sardagna (UERGS)\nMarlene Rozek (PUC/RS)\nVeronice Camargo da Silva (UERGS)\nMirna Susana Viera de Martinez (UERGS)\nMaria Fernanda Diogo (UFSC)\nApoliana Regina Groff (UFSC)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="3- Práticas de Inclusão"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="Andréa Tonini (UFMS)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="6dp"
+                                android:text="Anabela Cruz Santos (CIEd, Uminho/ Portugal)\nAna Paula Loução Martins (CIEd, Uminho/ Portugal)\nLuzia Lima Rodrigues (Escola Superior de Educação do Instituto Politécnico de Setúbal, Portugal)\nMarlene Rozek (PUC/RS)\nSusana Marinho (Universidade Fernando Pessoa – Porto/Portugal)\nArisa Araújo da Luz (UERGS)\nViviane Castro Camozzato (UERGS)\nAna Paula Santana (UFSC)\nMarivete Gesser (UFSC)\nApoliana Regina Groff (UFSC)\nCarlo Schmidt (UFSM)\nSíglia Pimentel Höher Camargo (UFPel)\nFrancielly Brizolla (UFPR)\nCíntia Rochele Alves de Oliveira (Unipampa - Bagé)\nClaudete da Silva Lima Martins (Unipampa - Bagé)\nGilnara da Costa Corrêa Oliveira (Unipampa - Bagé)\nJose Storniolo Nunes Brasil (Unipampa - Bagé)\nLauren Azevedo Poersch (Unipampa - Bagé)\nMichela Lemos Silveira Machado (Unipampa - Bagé)\nNara Rosane Machado de Oliveira (Unipampa - Bagé)\nThainá Pedroso Machado (Unipampa - Bagé)\nTobias de Medeiros Rodrigues (Unipampa - Bagé)\nValéria Urdangarin Borba (Unipampa – Bagé)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="4 – Atendimento Educacional Especializado"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="Francele de Abreu Carlan (UFPel)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="6dp"
+                                android:text="Anabela Cruz Santos (CIEd, Uminho/ Portugal)\nAna Paula Loução Martins (CIEd, Uminho/ Portugal)\nAna Paula da Silva Pereira (CIEd, Uminho/ Portugal)\nPaula Santos (Universidade de Aveiro)\nGeovana Mendonça Lunardi Mendes (UDESC)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="5- Investigações no Transtorno do Espectro do Autismo (TEA)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="Rita de Cássia Morem Cóssio Rodriguez (NEPCA/UFPel)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="6dp"
+                                android:text="Ana Paula da Silva Pereira (CIEd, Uminho/ Portugal)\nElsa Marta Soares (Instituto Politécnico de Leiria/Portugal)\nHelena Reis (Instituto Politécnico de Leiria/Portugal)\nPaula Lebre (Faculdade de Motricidade Humana,\nUniversidade de Lisboa)\nAna Paula Santana (UFSC)\nAna Carolina Wolff Mota (UFSC)\nCarlo Schmidt (UFSM)\nSíglia Pimentel Höher Camargo (UFPel)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="6- Intervenções com Pessoas com TEA"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="Rita de Cássia Morem Cóssio Rodriguez (NEPCA/UFPel)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="6dp"
+                                android:text="Andrea Jurdi (UFSP)\nElsa Marta Soares (Instituto Politécnico de Leiria/Portugal)\nHelena Reis (Instituto Politécnico de Leiria/Portugal)\nPaula Lebre (Faculdade de Motricidade Humana,Universidade de Lisboa)\nAna Paula Santana (UFSC)\nAna Carolina Wolff Mota (UFSC)\nCarlo Schmidt (UFSM)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="7- Intervenção Precoce para Pessoas com Deficiência e/ou TEA"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="2dp"
+                                android:text="Rita de Cássia Morem Cóssio Rodriguez (NEPCA/UFPel)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:padding="6dp"
+                                android:text="Andrea Jurdi (UFSP)\nElsa Marta Soares (Instituto Politécnico de Leiria/Portugal)\nHelena Reis (Instituto Politécnico de Leiria/Portugal)\nPaula Santos (Universidade de Aveiro)\nTeresa Brandão (Faculdade de Motricidade Humana\nUniversidade de Lisboa)\nAna Paula Santana (UFSC)\nAna Carolina Wolff Mota (UFSC)"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack" />
+
+                        </TableRow>
+
+                    </TableLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

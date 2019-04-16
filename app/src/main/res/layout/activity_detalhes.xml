@@ -1,161 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="8dp"
     android:orientation="vertical"
     tools:context=".activity.DetailsActivity">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civPefilPost"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/foto_de_perfil_padrao" />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_detalhes"
+            style="@style/HeaderBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="4dp" >
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvDetalhesPostNome"
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/s_nome"
-                android:textColor="@color/colorBlack"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+                android:src="@drawable/logo"/>
 
-            <TextView
-                android:id="@+id/tvDetalhesPostData"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/s_data"
-                android:textColor="@color/colorBlack"
-                android:textSize="12sp" />
+        </android.support.v7.widget.Toolbar>
 
-            <TextView
-                android:id="@+id/tvDetalhesPostPublicacao"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="@string/s_publicacao"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp" />
-        </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
 
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/ivFotoDetalhesPublicacao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/s_content_description_publicacao"
-        android:scaleType="fitCenter" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tvDetalhesPostContadorLikes"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="60dp"
-            android:gravity="center"
-            android:padding="2dp"
-            android:text="@string/s_numero_zero" />
-
-        <Button
-            android:id="@+id/bDetalhesPostLike"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/ic_favorite_border_black_24dp"
-            android:gravity="center"
-            android:padding="2dp" />
-
-        <View
-            android:id="@+id/divider"
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/tvDetalhesPostContadorComentarios"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:padding="2dp"
-            android:text="@string/s_numero_zero" />
-
-        <Button
-            android:id="@+id/bDetalhesPostComentario"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:background="@drawable/ic_comment_black_24dp"
-            android:padding="2dp" />
-    </LinearLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/srl_comentarios"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="60dp"
-        android:layout_weight="1">
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_comentarios"
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1" />
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/cabecalho_detalhes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/civ_profile_detalhes"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="8dp"
+                            android:background="@drawable/foto_de_perfil_padrao"
+                            android:elevation="2dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:elevation="1dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_name_detalhes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="@string/s_nome"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/nome_size"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_date_detalhes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/s_data"
+                                android:textColor="@color/colorGray"
+                                android:textSize="@dimen/data_size" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_publication_detalhes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:padding="8dp"
+                        android:text="@string/s_publicacao"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/publicacao_size" />
+
+                    <ImageView
+                        android:id="@+id/iv_picture_detalhes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/s_content_description_publicacao"
+                        android:scaleType="fitCenter" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/LL_interaction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal"
+                    android:paddingStart="8dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="8dp">
+
+                    <LinearLayout
+                        android:id="@+id/LL_curtir_detalhes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_likes_detalhes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:text="@string/s_numero_zero"
+                            android:textSize="@dimen/data_size" />
+
+                        <Button
+                            android:id="@+id/b_like_detalhes"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/ic_favorite_border_black_24dp"
+                            android:gravity="center"
+                            android:padding="2dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:text="@string/s_likes"
+                            android:textSize="@dimen/data_size" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorBlack" />
+
+                    <LinearLayout
+                        android:id="@+id/LL_comentario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorWhite"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_comments_detalhes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:text="@string/s_numero_zero"
+                            android:textSize="@dimen/data_size" />
+
+                        <Button
+                            android:id="@+id/b_comment_detalhes"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/ic_comment_black_24dp"
+                            android:padding="2dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/s_comment"
+                            android:textSize="@dimen/data_size" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_comentarios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fillViewport="true"
+                    android:nestedScrollingEnabled="false" />
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:background="@color/colorBackgroundMenu"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civPerfilComentario"
+            android:id="@+id/civ_my_perfil_detalhes"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:background="@drawable/foto_de_perfil_padrao" />
 
         <EditText
-            android:id="@+id/edComentar"
-            android:layout_width="wrap_content"
+            android:id="@+id/ed_comment_detalhes"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/colorWhite"
+            android:background="@drawable/bg_edit_text"
             android:ems="10"
-            android:hint="Comentário"
-            android:inputType="textPersonName" />
+            android:hint="@string/s_comment"
+            android:inputType="textPersonName"
+            android:padding="4dp" />
 
         <Button
-            android:id="@+id/bComentar"
+            android:id="@+id/b_publish_comment_detalhes"
             android:layout_width="32dp"
             android:layout_height="32dp"
+            android:layout_margin="5dp"
             android:background="@drawable/ic_send_black_24dp" />
 
     </LinearLayout>
-</LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

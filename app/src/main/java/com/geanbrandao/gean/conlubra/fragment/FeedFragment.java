@@ -89,11 +89,12 @@ public class FeedFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                     .into(civProfilePicture);
         }
 
-            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-            recyclerView.setLayoutManager(mLayoutManager);
-            recyclerView.setItemAnimator(new DefaultItemAnimator());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         getPostagens();
-
+        adapter = new PublicationAdapter(posts, getContext(), FeedFragment.this);
+        recyclerView.setAdapter(adapter);
         return view;
     }
 
@@ -110,9 +111,8 @@ public class FeedFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                         posts.add(doc.toObject(Postagem.class));
                         Log.i(TAG, "Id = " + doc.getId());
                     }
+                    adapter.notifyDataSetChanged();
 
-                    adapter = new PublicationAdapter(posts, getContext(), FeedFragment.this);
-                    recyclerView.setAdapter(adapter);
                     Log.i(TAG, "Adapater carregado");
                 } else {
                     Log.i(TAG, "Falhou ao carregar o Adapater");
@@ -183,5 +183,18 @@ public class FeedFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     public void onComentarioCliked(int i) {
         UserInformation.post = posts.get(i);
         startActivity(new Intent(getContext(), DetailsActivity.class));
+    }
+
+    @Override
+    public void onImageCliked(int i) {
+        UserInformation.post = posts.get(i);
+        startActivity(new Intent(getContext(), DetailsActivity.class));
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 }

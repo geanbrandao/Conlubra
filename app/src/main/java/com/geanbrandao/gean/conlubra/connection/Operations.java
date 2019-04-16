@@ -4,7 +4,8 @@ package com.geanbrandao.gean.conlubra.connection;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.geanbrandao.gean.conlubra.Base64Custom;
+import com.geanbrandao.gean.conlubra.utils.Base64Custom;
+import com.geanbrandao.gean.conlubra.model.Comentario;
 import com.geanbrandao.gean.conlubra.model.Postagem;
 import com.geanbrandao.gean.conlubra.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -163,7 +164,38 @@ public class Operations {
                         }
                     }
                 });
+    }
 
+    public static void addComment(List<Comentario> list) {
+        FirebaseFirestore db = ConnectionFirebase.getFirebaseFirestore();
+        db.collection(POST).document(UserInformation.post.getIdPostagem())
+                .update("comentariosPostagem", list)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+                    Log.i(TAG, "COMENTARIO - Sucesso ao salvar comentario");
+                } else {
+                    Log.i(TAG, "COMENTARIO - Falhou ao salvar comentario");
+                }
+            }
+        });
+    }
+
+    public static void updateContadorComentarios(int i){
+        FirebaseFirestore db = ConnectionFirebase.getFirebaseFirestore();
+        db.collection(POST).document(UserInformation.post.getIdPostagem())
+                .update("contadorComentariosPostagem", i)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()) {
+                            Log.i(TAG, "sucesso ao atualizar o contador de comentarios da postagem");
+                        } else {
+                            Log.i(TAG, "Falhou ao atualizar o contador de comentarios da postagem");
+                        }
+                    }
+                });
     }
 
 }

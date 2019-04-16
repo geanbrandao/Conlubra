@@ -12,6 +12,13 @@
     <string name="nav_header_programacao">Programação</string>
     <string name="nav_header_titulo_conta">Conta</string>
     <string name="nav_header_logout">Logout</string>
+    <string name="nav_header_favoritos">Favoritos</string>
+    <string name="nav_header_notificacoes">Notificações</string>
+    <string name="nav_header_minicursos">Mini-cursos</string>
+    <string name="nav_header_informacoes">Informações</string>
+    <string name="nav_header_patrocinio">Patrocinio/Apoio</string>
+    <string name="nav_header_faq">F.A.Q</string>
+    <string name="nav_header_mapa">Mapa</string>
 
     <string name="s_b_geral">Geral</string>
     <string name="s_b_minicursos">Minicursos</string>
@@ -25,19 +32,58 @@
     <string name="s_adapter_nome_item">Evento de  acolhida do evento de evento</string>
     <string name="s_adapter_hora">00:00 - 00:00</string>
 
+    <string name="s_information1">2º CONLUBRA</string>
+    <string name="s_information2">2º Congresso Luso-Brasileiro - TEA e Educação Inclusiva</string>
+    <string name="s_information3">Período de realização 28 a 30 de agosto de 2019</string>
+    <string name="s_information4">Local: Pelotas/RS/Brasil</string>
+    <string name="s_information5">\nCOMISSÃO ORGANIZADORA\n</string>
+    <string name="s_information6">UNIVERSIDADE FEDERAL DE PELOTAS</string>
+    <string name="s_information7">www.ufpel.edu.br</string>
+    <string name="s_information8">\nCoordenação Nacional:</string>
+    <string name="s_information9">Rita de Cássia Morem Cóssio Rodriguez – NEPCA/UFPEL\nMaria Teresa Nogueira - NEPCA/UFPEL\nFrancele de Abreu Carlan - NEPCA/UFPEL\nRaquel Lüdtke - UFPEL</string>
+    <string name="s_information10">\nEquipe organizadora</string>
+
+    <string name="s_information11">Maria Teresa Nogueira - NEPCA/UFPEL
+\nClarissa Bilhalva - NEPCA/UFPEL
+\nMaria da Graça Cunha Neves - NEPCA/UFPEL
+\nAntônio Olvedo - NEPCA/UFPEL
+\nAnna Treptow Weinberger – NEPCA/UFPEL
+\nLuana Ribeiro Bueno - NEPCA/UFPEL
+\nVeronice Camargo da Silva - UERGS
+\nAndréa Tonini - UFSM
+\nClaudete Lima - UNIPAMPA
+\nFrancéli Brizzola - UFPR</string>
+    <string name="s_information12">\nINSTITUTO EDUCAÇÃO, UNIVERSIDADE DO MINHO</string>
+    <string name="s_information13">www.cied.uminho.pt</string>
+    <string name="s_information14">\nCoordenação Internacional</string>
+    <string name="s_information15">Ana Paula da Silva Pereira – CIEd/IE - UMinho</string>
+    <string name="s_information16">\nEquipe organizadora Internacioanl:</string>
+    <string name="s_information17">Helena Reis - Escola Superior de Saúde de Leiria- Instituto Politécnico de Leiria - PT
+    \nAnelise do Pinho Cóssio – IE - UMinho</string>
+
+    <string name="s_information18">\nComissão Científica de Avaliação do II CONLUBRA</string>
+    <string name="s_information19">Coordenadoras da comissão de avaliação: Francele de Abreu Carlan (UFPel, contato: avaliacaoconlubra@gmail.com)
+    Coordenadora dos ANAIS do evento: Francele de Abreu Carlan, Raquel Lüdke e Rita de Cássia Morem Cóssio Rodriguez (UFPel, contato: avaliacaoconlubra@gmail.com)
+    </string>
+
+
     <string name="s_publicar">Publicar</string>
     <string name="s_reportar">Reportar</string>
     <string name="s_content_description_publicacao">Imagem da publicação</string>
     <string name="s_numero_zero">0</string>
-    <string name="s_comentario">Comentários</string>
     <string name="s_publicacao">Publicação</string>
     <string name="s_nome">Nome</string>
     <string name="s_data">Data</string>
-    <string name="s_likes">Likes</string>
+    <string name="s_likes">Curtidas</string>
+    <string name="s_comment">Comentários</string>
     <string name="s_login">Login</string>
     <string name="s_ou">ou</string>
     <string name="s_cadastrar">Cadastrar</string>
     <string name="s_postagens">Postagens</string>
+    <string name="s_what_you_think">O que você está pensando ?</string>
+
+    <string name="button_add_picture">Adicionar foto</string>
+    <string name="button_remove_picture">Remover foto</string>
 
 
     <string name="s_hint_email">E-mail</string>

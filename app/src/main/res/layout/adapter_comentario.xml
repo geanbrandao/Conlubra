@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="8dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,7 +12,7 @@
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_foto_perfil_comentario"
+            android:id="@+id/civ_profile_commet"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="5dp" />
@@ -19,63 +20,88 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@drawable/bg_edit_text"
+            android:orientation="vertical"
+            android:padding="5dp">
 
             <TextView
-                android:id="@+id/tv_comentario_nome"
+                android:id="@+id/tv_name_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif-medium"
                 android:text="@string/s_nome"
                 android:textColor="@color/colorBlack"
-                android:textSize="14sp"
+                android:textSize="@dimen/nome_size"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_comentario_data"
+                android:id="@+id/tv_date_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/s_data"
-                android:textColor="@color/colorBlack"
-                android:textSize="12sp" />
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/data_size" />
 
             <TextView
-                android:id="@+id/tv_comentario"
+                android:id="@+id/tv_comment_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="@string/s_comentario"
-                android:textColor="@color/colorBlack" />
+                android:fontFamily="sans-serif-light"
+                android:text="@string/s_comment"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/publicacao_size" />
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvContadorLikesComentario"
+        <LinearLayout
+            android:id="@+id/LL_curtir_comment"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="5dp"
             android:gravity="center"
-            android:padding="2dp"
-            android:text="@string/s_numero_zero" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/bLikecomentario"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/ic_favorite_border_black_24dp"
-            android:gravity="center"
-            android:padding="2dp" />
+            <TextView
+                android:id="@+id/tv_likes_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="@string/s_numero_zero"
+                android:textSize="@dimen/data_size" />
 
+            <Button
+                android:id="@+id/b_like_comment"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_favorite_border_black_24dp"
+                android:gravity="center"
+                android:padding="2dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/s_likes"
+                android:textSize="@dimen/data_size" />
+        </LinearLayout>
     </LinearLayout>
 
-    <include layout="@layout/divisor" />
+    <include
+        layout="@layout/divisor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

@@ -7,11 +7,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.geanbrandao.gean.conlubra.DownloadImageTask;
+import com.geanbrandao.gean.conlubra.utils.DownloadImageTask;
 import com.geanbrandao.gean.conlubra.R;
 import com.geanbrandao.gean.conlubra.connection.UserInformation;
 import com.geanbrandao.gean.conlubra.model.Postagem;
@@ -55,8 +56,8 @@ public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.
         holder.name.setText(p.getNomeAutorPostagem());
         holder.date.setText(formataData(p.getDataPostagem()));
         holder.post.setText(p.getConteudoPostagem());
-        holder.countLikes.setText(p.getContadorLikesPostagem() + "");
-        holder.countComments.setText(p.getContadorComentariosPostagem() + "");
+        holder.countLikes.setText(String.valueOf(p.getContadorLikesPostagem()));
+        holder.countComments.setText(String.valueOf(p.getContadorComentariosPostagem()));
         aplicaEventoClick(holder, i);
         if (isLike(p.getIdPostagem())) {
             holder.like.setBackground(context.getDrawable(R.drawable.ic_favorite_black_24dp));
@@ -88,13 +89,13 @@ public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.
                                 .getConstantState())) {
                     holder.like.setBackground(context.getDrawable(R.drawable.ic_favorite_border_black_24dp));
                     countLikes--;
-                    holder.countLikes.setText(""+countLikes);
+                    holder.countLikes.setText(String.valueOf(countLikes));
                     listener.onLikeCliked(position, false);
                     Log.i("Like", "Tinha like agora não tem");
                 } else {
                     holder.like.setBackground(context.getDrawable(R.drawable.ic_favorite_black_24dp));
                     countLikes++;
-                    holder.countLikes.setText(""+countLikes);
+                    holder.countLikes.setText(String.valueOf(countLikes));
                     listener.onLikeCliked(position, true);
                     Log.i("Like", "Não tinha like agora tem");
                 }
@@ -116,6 +117,13 @@ public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.
                 listener.onItemClicked(position);
             }
         });
+
+        holder.picturePost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onImageCliked(position);
+            }
+        });
     }
 
     private void baixarImagem(String url, ImageView iv) {
@@ -135,7 +143,7 @@ public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView name, post, date, countLikes, countComments;
-        private ImageView like, comment;
+        private Button like, comment;
         private ImageView picturePost;
         private CircleImageView profilePicture;
 
@@ -143,15 +151,15 @@ public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.tvPublicacaoNome);
-            post = itemView.findViewById(R.id.tvPublicacao);
-            date = itemView.findViewById(R.id.tvPublicacaoData);
-            countLikes = itemView.findViewById(R.id.tvPublicacaoContadorLikes);
-            countComments = itemView.findViewById(R.id.tvPublicacaoContadorComentarios);
-            like = itemView.findViewById(R.id.bPublicacaoLikes);
-            comment = itemView.findViewById(R.id.bPublicacaoComentarios);
-            profilePicture = itemView.findViewById(R.id.civFotoPerfilPublicacao);
-            picturePost = itemView.findViewById(R.id.ivFotoPublicacao);
+            name = itemView.findViewById(R.id.tv_name_publication);
+            post = itemView.findViewById(R.id.tv_publication_publication);
+            date = itemView.findViewById(R.id.tv_date_publication);
+            countLikes = itemView.findViewById(R.id.tv_likes_publication);
+            countComments = itemView.findViewById(R.id.tv_comment_publication);
+            like = itemView.findViewById(R.id.b_like_publication);
+            comment = itemView.findViewById(R.id.b_comment_publication);
+            profilePicture = itemView.findViewById(R.id.civ_profile_publication);
+            picturePost = itemView.findViewById(R.id.iv_picture_publication);
 
 
         }
@@ -163,5 +171,7 @@ public class PublicationAdapter extends RecyclerView.Adapter<PublicationAdapter.
         void onLikeCliked(int position, boolean like);
 
         void onComentarioCliked(int position);
+
+        void onImageCliked(int position);
     }
 }

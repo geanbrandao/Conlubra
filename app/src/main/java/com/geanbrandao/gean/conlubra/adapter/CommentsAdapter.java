@@ -3,15 +3,15 @@ package com.geanbrandao.gean.conlubra.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.geanbrandao.gean.conlubra.DownloadImageTask;
+import com.geanbrandao.gean.conlubra.utils.DownloadImageTask;
 import com.geanbrandao.gean.conlubra.R;
 import com.geanbrandao.gean.conlubra.connection.UserInformation;
 import com.geanbrandao.gean.conlubra.model.Comentario;
@@ -48,12 +48,12 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
         Comentario c = comments.get(i);
         holder.name.setText(c.getNomeAutorComentario());
-        holder.date.setText(formataData(c.getDataComentario()));
+        holder.date.setText(formatDate(c.getDataComentario()));
         holder.comment.setText(c.getConteudoComentario());
         int count = c.getContadorLikesComentario();
-        holder.countlikes.setText(count);
-        baixarImagem(c.getFotoAutorPostagem(), holder.civProfilePicture);
-        aplicaEventoClick(holder, i);
+        holder.countlikes.setText(count+"");
+        downloadImg(c.getFotoAutorPostagem(), holder.civProfilePicture);
+        applyEventClick(holder, i);
         if (isLike(c.getIdComentario())){
             holder.like.setBackground(context.getDrawable(R.drawable.ic_favorite_black_24dp));
         } else {
@@ -62,11 +62,26 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.MyView
 
     }
 
-    private void aplicaEventoClick(final MyViewHolder holder, final int position) {
+    private void applyEventClick(final MyViewHolder holder, final int position) {
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Botao like", Toast.LENGTH_SHORT).show();
+                int countLikes = comments.get(position).getContadorLikesComentario();
+                if(holder.like.getBackground().getConstantState()
+                        .equals(context.getDrawable(R.drawable.ic_favorite_black_24dp)
+                                .getConstantState())){
+                    holder.like.setBackground(context.getDrawable(R.drawable.ic_favorite_border_black_24dp));
+                    countLikes--;
+                    holder.countlikes.setText(String.valueOf(countLikes));
+                    listener.onLikeCliked(position, false);
+                    Log.i("Like", "Tinha like agora não tem");
+                } else {
+                    holder.like.setBackground(context.getDrawable(R.drawable.ic_favorite_black_24dp));
+                    countLikes++;
+                    holder.countlikes.setText(String.valueOf(countLikes));
+                    listener.onLikeCliked(position, true);
+                    Log.i("Like", "Não tinha like agora tem");
+                }
             }
         });
     }
@@ -82,11 +97,11 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.MyView
         return false;
     }
 
-    private void baixarImagem(String url, ImageView iv) {
+    private void downloadImg(String url, ImageView iv) {
         new DownloadImageTask(iv).execute(url);
     }
 
-    private String formataData(Date date) {
+    private String formatDate(Date date) {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("HH:mm '-' dd/MM/yyyy", Locale.US);
         return dateFormatter.format(date);
     }
@@ -103,12 +118,12 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.MyView
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.tv_comentario_nome);
-            date = itemView.findViewById(R.id.tv_comentario_data);
-            comment = itemView.findViewById(R.id.tv_comentario);
-            countlikes = itemView.findViewById(R.id.tvContadorLikesComentario);
-            like = itemView.findViewById(R.id.bLikecomentario);
-            civProfilePicture = itemView.findViewById(R.id.civ_foto_perfil_comentario);
+            name = itemView.findViewById(R.id.tv_name_comment);
+            date = itemView.findViewById(R.id.tv_date_comment);
+            comment = itemView.findViewById(R.id.tv_comment_comment);
+            countlikes = itemView.findViewById(R.id.tv_likes_comment);
+            like = itemView.findViewById(R.id.b_like_comment);
+            civProfilePicture = itemView.findViewById(R.id.civ_profile_commet);
         }
     }
     public interface ComentariosAdapaterListener {

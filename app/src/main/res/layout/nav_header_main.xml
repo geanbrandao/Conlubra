@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
     android:background="@drawable/side_nav_bar"
@@ -44,10 +45,20 @@
         app:layout_constraintStart_toStartOf="@+id/tv_nome_usuario_header"
         app:layout_constraintTop_toBottomOf="@+id/tv_nome_usuario_header" />
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="55dp"
+        android:background="@drawable/bg_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/civ_foto_perfil_header"
+        app:layout_constraintStart_toStartOf="@+id/civ_foto_perfil_header"
+        app:layout_constraintTop_toTopOf="@+id/civ_foto_perfil_header" />
+
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginStart="55dp"
         android:background="@drawable/ic_edit_black_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/civ_foto_perfil_header"

@@ -8,18 +8,55 @@
             android:id="@+id/nav_feed"
             android:icon="@drawable/ic_rss_feed_black_24dp"
             android:title="@string/nav_header_linha_tempo" />
+
         <item
             android:id="@+id/nav_programacao"
             android:icon="@drawable/ic_date_range_black_24dp"
             android:title="@string/nav_header_programacao" />
+
         <item
             android:id="@+id/nav_perfil"
             android:icon="@drawable/ic_person_black_24dp"
             android:title="@string/nav_header_perfil" />
+
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
             android:title="@string/nav_header_logout" />
 
+        <item
+            android:id="@+id/nav_favoritos"
+            android:icon="@drawable/ic_favorite_black_24dp"
+            android:title="@string/nav_header_favoritos" />
+
+        <item
+            android:id="@+id/nav_notificacoes"
+            android:icon="@drawable/ic_notifications_24dp"
+            android:title="@string/nav_header_notificacoes" />
+
+        <item
+            android:id="@+id/nav_minicursos"
+            android:icon="@drawable/ic_library_books_24dp"
+            android:title="@string/nav_header_minicursos" />
+
+        <item
+            android:id="@+id/nav_informacoes"
+            android:icon="@drawable/ic_info_24dp"
+            android:title="@string/nav_header_informacoes" />
+
+        <item
+            android:id="@+id/nav_patrocinio"
+            android:icon="@drawable/ic_sponsor"
+            android:title="@string/nav_header_patrocinio" />
+
+        <item
+            android:id="@+id/nav_faq"
+            android:icon="@drawable/ic_forum_24dp"
+            android:title="@string/nav_header_faq" />
+
+        <item
+            android:id="@+id/nav_mapa"
+            android:icon="@drawable/ic_place_24dp"
+            android:title="@string/nav_header_mapa" />
     </group>
 </menu>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -65,6 +66,13 @@ public class WritePublicationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escrever_publicacao);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+        setTitle("");
+
+        Toolbar toolbar = findViewById(R.id.toolbar_write);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         // firabse
         storageReference = ConnectionFirebase.getFirebaseStorage();
@@ -75,12 +83,12 @@ public class WritePublicationActivity extends AppCompatActivity {
         imgAdd = false;
         post = new Postagem();
 
-        civProfilePicture = findViewById(R.id.civ_foto_perfil_escrever_publicacao);
-        tvName = findViewById(R.id.tv_escrever_publicacao_nome);
-        edWritePublication = findViewById(R.id.ed_escrever_publicacao);
-        bPublicar = findViewById(R.id.b_publicar);
-        bAddPicture = findViewById(R.id.b_add_foto);
-        ivWritePublication = findViewById(R.id.ivWritePublication);
+        civProfilePicture = findViewById(R.id.civ_profile_write);
+        tvName = findViewById(R.id.tv_name_write);
+        edWritePublication = findViewById(R.id.ed_write);
+        bPublicar = findViewById(R.id.b_publish_write);
+        bAddPicture = findViewById(R.id.b_add_picture);
+        ivWritePublication = findViewById(R.id.iv_picture_write);
 
         if (UserInformation.user.getImagemPerfilUrl() != null) {
             Glide.with(this)
@@ -199,6 +207,7 @@ public class WritePublicationActivity extends AppCompatActivity {
 
                 if (imagem != null) {
                     Log.i(TAG, "imagem escolhida da galeria");
+                    ivWritePublication.setVisibility(View.VISIBLE);
                     ivWritePublication.setImageBitmap(imagem);
 
                     //Recuperar dados da imagem para o firebase
@@ -224,5 +233,10 @@ public class WritePublicationActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
 }

@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.geanbrandao.gean.conlubra.R;
-import com.geanbrandao.gean.conlubra.activity.LoadActivity;
 import com.geanbrandao.gean.conlubra.activity.LoginActivity;
 import com.geanbrandao.gean.conlubra.alert.DialogBox;
 import com.geanbrandao.gean.conlubra.connection.Operations;
@@ -55,58 +54,6 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        /*mSignInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signIn();
-            }
-        });*/
-
-        // facebook
-        /*callbackManager = CallbackManager.Factory.create();
-        loginButton = (LoginButton) view.findViewById(R.id.login_button);
-        loginButton.setReadPermissions("email", "public_profile");
-        // If using in a fragment
-        loginButton.setFragment(this);
-
-        // Callback registration
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                // App code
-                Log.i("Facebook", "Profile escolhido com sucesso");
-                handleFacebookAccessToken(loginResult.getAccessToken());
-            }
-
-            @Override
-            public void onCancel() {
-                Log.i("Facebook", "Chamada do botão cancelada");
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                Log.i("Facebook", "Erro ao escolher perfil " + exception);
-            }
-        });*/
-
-        /*
-        sharedPreferences = getContext().getSharedPreferences("PREFERENCES", getContext().MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        editor.apply();
-
-        player = new Jogador();
-
-        // Google
-        // Configure Google Sign In
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("533087579522-fcltotm1u54hn8gr5fsor235uefbuqmv.apps.googleusercontent.com")
-                .requestEmail()
-                .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);*/
-
-        //keytool -exportcert -alias androiddebugkey -keystore "C:\Users\karlo\.android\debug.keystore" | "C:\Users\karlo\Downloads\openssl-0.9.8k_X64\bin\openssl" sha1 -binary | "C:\Users\karlo\Downloads\openssl-0.9.8k_X64\bin\openssl" base64
-        // a senha padrao é android
-
         return view;
     }
 
@@ -144,7 +91,7 @@ public class LoginFragment extends Fragment {
                             if (mAuth.getCurrentUser().isEmailVerified()) {
                                 Log.i("EmailDeVerificacao", "Email foi verificado com sucesso");
                                 Operations.carregaUsuario(email);
-                                startActivity(new Intent(getContext(), LoadActivity.class));
+                                //startActivity(new Intent(getContext(), LoadActivity.class));
                             } else {
                                 // manda o email de verificacao de novo e desloga o usuario
                                 dialogo.caixaVerificarEmail(getContext());

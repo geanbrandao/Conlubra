@@ -17,8 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.geanbrandao.gean.conlubra.DownloadImageTask;
-import com.geanbrandao.gean.conlubra.Permissao;
+import com.geanbrandao.gean.conlubra.utils.DownloadImageTask;
+import com.geanbrandao.gean.conlubra.utils.Permissao;
 import com.geanbrandao.gean.conlubra.R;
 import com.geanbrandao.gean.conlubra.connection.UserInformation;
 import com.geanbrandao.gean.conlubra.connection.ConnectionFirebase;
