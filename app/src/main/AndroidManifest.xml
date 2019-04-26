@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.geanbrandao.gean.conlubra">
+    package="com.geanbrandao.gean.conlubra2">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -15,11 +15,11 @@
         <activity
             android:name=".activity.DetailsActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".activity.WritePublicationActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".activity.LoginActivity"
@@ -31,7 +31,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBZIpDUDxbV0xZfiSfjNjp5KjAylmEMW1M"/>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCkOjUDWx1_I6j4XS8CN3ljPJSN2_B0gnU"/>
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_application_id"/>
+        <activity android:name="com.facebook.FacebookActivity" android:configChanges= "keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:label="@string/app_name" />
+        <activity android:name="com.facebook.CustomTabActivity" android:exported="true">
+            <intent-filter> <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/facebook_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

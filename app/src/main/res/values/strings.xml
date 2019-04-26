@@ -19,6 +19,8 @@
     <string name="nav_header_patrocinio">Patrocinio/Apoio</string>
     <string name="nav_header_faq">F.A.Q</string>
     <string name="nav_header_mapa">Mapa</string>
+    <string name="nav_header_sobre_app">Sobre o aplicativo</string>
+
 
     <string name="s_b_geral">Geral</string>
     <string name="s_b_minicursos">Minicursos</string>
@@ -66,6 +68,10 @@
     Coordenadora dos ANAIS do evento: Francele de Abreu Carlan, Raquel Lüdke e Rita de Cássia Morem Cóssio Rodriguez (UFPel, contato: avaliacaoconlubra@gmail.com)
     </string>
 
+    <string name="s_about_app1">Sobre o aplicativo conlubra</string>
+    <string name="s_about_app2">Aplicativo desenvolvido por Gean Carlos Brandão\nDesenvolvedor Mobile Android\nPara mais informações sobre o app ou contato, envie email para gean.brandao.dev@gmail.com</string>
+    <string name="s_about_app3">https://play.google.com/store/apps/dev?id=7010072320259417213</string>
+
 
     <string name="s_publicar">Publicar</string>
     <string name="s_reportar">Reportar</string>
@@ -104,6 +110,8 @@
     <string name="m_cadastrar_falhou">Falhou ao fazer cadastro</string>
     <string name="m_login_novamente">Tente fazer o login novamente</string>
 
+    <string name="facebook_application_id" translatable="false">572055553284614</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb572055553284614</string>
 
     <!-- Mensagem builder -->
     <string name="d_verificar_email">

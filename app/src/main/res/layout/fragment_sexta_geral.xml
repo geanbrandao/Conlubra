@@ -5,16 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".fragment.subFragmentGeral.SexFragment">
 
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/srl_sexta_geral"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_sexta_geral"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_sexta_geral"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+        android:layout_height="match_parent" />
 
 </FrameLayout>

@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.LocationFragment">
+    tools:context=".fragment.MiniCursosFragment">
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        />
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Em breve"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp" />
 
 </FrameLayout>
