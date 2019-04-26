@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "406741543895",
+    "firebase_url": "https://conlubra-238200.firebaseio.com",
+    "project_id": "conlubra-238200",
+    "storage_bucket": "conlubra-238200.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406741543895:android:f52014406a3ff45a",
+        "android_client_info": {
+          "package_name": "com.geanbrandao.gean.conlubra2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406741543895-4jss838klisn85a9gl4rerqovvqsrgj6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.geanbrandao.gean.conlubra2",
+            "certificate_hash": "79fadf632a961463dce7151bf52393e024e3c678"
+          }
+        },
+        {
+          "client_id": "406741543895-8aq41ib6i76meij759mhonnfllf94hb5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkOjUDWx1_I6j4XS8CN3ljPJSN2_B0gnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406741543895-8aq41ib6i76meij759mhonnfllf94hb5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
